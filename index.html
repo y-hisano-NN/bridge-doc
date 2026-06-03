@@ -1,9 +1,9 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BRIDGE 窶・繝励Ο繧ｸ繧ｧ繧ｯ繝医ラ繧ｭ繝･繝｡繝ｳ繝・/title>
+<title>BRIDGE — プロジェクトドキュメント</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:wght@400;500&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
 <style>
@@ -42,7 +42,7 @@ body {
   font-size: 15px;
 }
 
-/* 笏笏 NOISE TEXTURE 笏笏 */
+/* ── NOISE TEXTURE ── */
 body::before {
   content: '';
   position: fixed;
@@ -52,7 +52,7 @@ body::before {
   z-index: 0;
 }
 
-/* 笏笏 HERO 笏笏 */
+/* ── HERO ── */
 .hero {
   position: relative;
   min-height: 100vh;
@@ -170,7 +170,7 @@ body::before {
   50% { opacity: 1; }
 }
 
-/* 笏笏 SECTIONS 笏笏 */
+/* ── SECTIONS ── */
 .section {
   max-width: var(--max-width);
   margin: 0 auto;
@@ -204,7 +204,7 @@ body::before {
   margin-bottom: 80px;
 }
 
-/* 笏笏 PROBLEM CARDS 笏笏 */
+/* ── PROBLEM CARDS ── */
 .problem-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -286,7 +286,7 @@ body::before {
   background: var(--broadcast);
 }
 
-/* 笏笏 SCREEN CAPTURES 笏笏 */
+/* ── SCREEN CAPTURES ── */
 .screens-grid {
   display: grid;
   grid-template-columns: 1fr;
@@ -545,7 +545,7 @@ body::before {
   float: right;
 }
 
-/* 笏笏 HOW IT WORKS 笏笏 */
+/* ── HOW IT WORKS ── */
 .modes-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -596,7 +596,7 @@ body::before {
   line-height: 1.8;
 }
 
-/* 笏笏 SPEC TABLE 笏笏 */
+/* ── SPEC TABLE ── */
 .spec-table {
   width: 100%;
   border-collapse: collapse;
@@ -644,7 +644,7 @@ body::before {
 .tag.gemini { background: var(--gemini-dim); color: var(--gemini-accent); border: 1px solid rgba(160,232,122,0.2); }
 .tag.tech { background: var(--surface2); color: var(--text-secondary); border: 1px solid var(--border-bright); }
 
-/* 笏笏 AGENT TABLE 笏笏 */
+/* ── AGENT TABLE ── */
 .agent-table-wrap {
   overflow-x: auto;
 }
@@ -694,7 +694,7 @@ body::before {
   margin-left: 4px;
 }
 
-/* 笏笏 INSIGHT CARDS 笏笏 */
+/* ── INSIGHT CARDS ── */
 .insight-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -734,7 +734,7 @@ body::before {
   line-height: 1.75;
 }
 
-/* 笏笏 DEV STEPS 笏笏 */
+/* ── DEV STEPS ── */
 .steps-list {
   position: relative;
   padding-left: 32px;
@@ -803,7 +803,7 @@ body::before {
   line-height: 1.6;
 }
 
-/* 笏笏 FOOTER 笏笏 */
+/* ── FOOTER ── */
 .footer {
   text-align: center;
   padding: 80px 24px;
@@ -829,13 +829,13 @@ body::before {
   letter-spacing: 1px;
 }
 
-/* 笏笏 ANIMATIONS 笏笏 */
+/* ── ANIMATIONS ── */
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* 笏笏 RESPONSIVE 笏笏 */
+/* ── RESPONSIVE ── */
 @media (max-width: 600px) {
   .mini-grid-4 { grid-template-columns: repeat(2, 1fr); }
   .hero-meta { gap: 16px; }
@@ -844,27 +844,27 @@ body::before {
 </head>
 <body>
 
-<!-- 笏笏 HERO 笏笏 -->
+<!-- ── HERO ── -->
 <div class="hero">
   <div class="hero-eyebrow">Broadcasting & Routing Intelligence for Decision and Grounding Engine</div>
   <div class="hero-title">BRI<span>D</span>GE</div>
-  <div class="hero-sub">遉ｾ髟ｷ縺ｮ閼ｳ蜀・紛逅・ｒ1逕ｻ髱｢縺ｫ髮・ｴ・☆繧九、I隍・愍諤晁・・繝ｩ繝・ヨ繝輔か繝ｼ繝</div>
+  <div class="hero-sub">社長の脳内整理を1画面に集約する、AI複眼思考プラットフォーム</div>
   <div class="hero-meta">
     <div class="hero-meta-item">
-      <div class="hero-meta-label">險ｭ險磯幕蟋・/div>
-      <div class="hero-meta-value">2026蟷ｴ6譛・/div>
+      <div class="hero-meta-label">設計開始</div>
+      <div class="hero-meta-value">2026年6月</div>
     </div>
     <div class="hero-meta-item">
-      <div class="hero-meta-label">繧ｨ繝ｼ繧ｸ繧ｧ繝ｳ繝・/div>
-      <div class="hero-meta-value">4莠ｺ・・laude + Gemini・・/div>
+      <div class="hero-meta-label">エージェント</div>
+      <div class="hero-meta-value">4人（Claude + Gemini）</div>
     </div>
     <div class="hero-meta-item">
-      <div class="hero-meta-label">蟇ｾ蠢懊Δ繝・Ν</div>
-      <div class="hero-meta-value">7繝｢繝・Ν</div>
+      <div class="hero-meta-label">対応モデル</div>
+      <div class="hero-meta-value">7モデル</div>
     </div>
     <div class="hero-meta-item">
-      <div class="hero-meta-label">繝・ヰ繧､繧ｹ</div>
-      <div class="hero-meta-value">PC繝ｻ繝｢繝舌う繝ｫ繝ｻ繧ｹ繝槭・</div>
+      <div class="hero-meta-label">デバイス</div>
+      <div class="hero-meta-value">PC・モバイル・スマホ</div>
     </div>
   </div>
   <div class="scroll-hint">
@@ -873,55 +873,55 @@ body::before {
   </div>
 </div>
 
-<!-- 笏笏 01 隱ｲ鬘・笏笏 -->
+<!-- ── 01 課題 ── -->
 <div class="section">
-  <div class="section-number">01 窶・隗｣豎ｺ縺吶ｋ隱ｲ鬘・/div>
+  <div class="section-number">01 — 解決する課題</div>
   <div class="section-title">PROBLEM</div>
 
   <div class="problem-grid">
     <div class="problem-card">
-      <div class="problem-icon">竍・/div>
-      <div class="problem-title">遘ｻ蜍輔さ繧ｹ繝医・逋ｺ逕・/div>
-      <div class="problem-desc">豈取律4縺､縺ｮ繝√Ε繝・ヨ・・laude CoS繝ｻClaude CHRO繝ｻGemini CoS繝ｻGemini CHRO・峨ｒ陦後″譚･縺励※縺・◆縲ょ・繧頑崛縺医・縺溘・縺ｫ諤晁・′騾泌・繧後ｋ縲・/div>
+      <div class="problem-icon">⇄</div>
+      <div class="problem-title">移動コストの発生</div>
+      <div class="problem-desc">毎日4つのチャット（Claude CoS・Claude CHRO・Gemini CoS・Gemini CHRO）を行き来していた。切り替えのたびに思考が途切れる。</div>
     </div>
     <div class="problem-card">
-      <div class="problem-icon">笳ｫ</div>
-      <div class="problem-title">蜷後§譁・ｫ繧・蠎ｦ隱ｭ繧</div>
-      <div class="problem-desc">Claude縺ｨGemini縺ｧ豌励▼縺阪・驕輔＞縺ｯ縺ゅｋ縺後√⊇縺ｼ蜷後§蜀・ｮｹ繧・蠎ｦ隱ｭ縺ｿ逶ｴ縺咎撼蜉ｹ邇・′諱貞ｸｸ蛹悶＠縺ｦ縺・◆縲・/div>
+      <div class="problem-icon">◫</div>
+      <div class="problem-title">同じ文章を2度読む</div>
+      <div class="problem-desc">ClaudeとGeminiで気づきの違いはあるが、ほぼ同じ内容を2度読み直す非効率が恒常化していた。</div>
     </div>
     <div class="problem-card">
-      <div class="problem-icon">竓・/div>
-      <div class="problem-title">譁・ц縺ｮ譁ｭ邨ｶ</div>
-      <div class="problem-desc">縺ゅｋAI縺ｨ縺ｮ豺ｱ謗倥ｊ邨先棡繧貞挨縺ｮAI縺ｫ貂｡縺咎圀縲∵ｯ主屓謇句虚縺ｧ繧ｳ繝斐・繝ｻ蜀崎ｪｬ譏弱′蠢・ｦ√□縺｣縺溘・/div>
+      <div class="problem-icon">⊘</div>
+      <div class="problem-title">文脈の断絶</div>
+      <div class="problem-desc">あるAIとの深掘り結果を別のAIに渡す際、毎回手動でコピペ・再説明が必要だった。</div>
     </div>
   </div>
 
-  <div class="solution-arrow">竊・BRIDGE 縺瑚ｧ｣豎ｺ縺吶ｋ 竊・/div>
+  <div class="solution-arrow">↓ BRIDGE が解決する ↓</div>
 
   <div class="solution-grid">
     <div class="solution-card">
-      <div class="problem-icon">笳・/div>
-      <div class="problem-title">1逕ｻ髱｢繝ｻ繧ｼ繝ｭ遘ｻ蜍・/div>
-      <div class="problem-desc">4莠ｺ縺ｮAI縺・逕ｻ髱｢縺ｫ髮・ｴ・ゅち繝門・繧頑崛縺医ｂ荳崎ｦ√りｭｰ鬘後ｒ謚輔￡繧後・蜈ｨ蜩｡縺悟酔譎ゅ↓蠢懃ｭ斐☆繧九・/div>
+      <div class="problem-icon">◈</div>
+      <div class="problem-title">1画面・ゼロ移動</div>
+      <div class="problem-desc">4人のAIが1画面に集約。タブ切り替えも不要。議題を投げれば全員が同時に応答する。</div>
     </div>
     <div class="solution-card">
-      <div class="problem-icon">筮｡</div>
-      <div class="problem-title">荳ｦ蛻玲ｯ碑ｼ・・蜊ｳ驕ｸ謚・/div>
-      <div class="problem-desc">4蛻励げ繝ｪ繝・ラ縺ｧ蜷梧凾陦ｨ遉ｺ縲りｪｭ縺ｿ豈斐∋縺ｦ繝ｯ繝ｳ繧ｯ繝ｪ繝・け縺ｧ縲後％縺ｮ莠ｺ縺ｨ豺ｱ謗倥ｊ縺吶ｋ縲阪ｒ驕ｸ縺ｹ繧九・/div>
+      <div class="problem-icon">⬡</div>
+      <div class="problem-title">並列比較・即選択</div>
+      <div class="problem-desc">4列グリッドで同時表示。読み比べてワンクリックで「この人と深掘りする」を選べる。</div>
     </div>
     <div class="solution-card">
-      <div class="problem-icon">筅ｳ</div>
-      <div class="problem-title">莨夊ｩｱ縺斐→縺ｮ蠑輔″邯吶℃</div>
-      <div class="problem-desc">HANDOFF縺ｧ莨夊ｩｱ螻･豁ｴ縺斐→蛻･縺ｮAI縺ｸ貂｡縺帙ｋ縲・emini縺ｸ縺ｯ繝ｯ繝ｳ繧ｯ繝ｪ繝・け繧ｳ繝斐・縺ｧOK縲・/div>
+      <div class="problem-icon">⤳</div>
+      <div class="problem-title">会話ごとの引き継ぎ</div>
+      <div class="problem-desc">HANDOFFで会話履歴ごと別のAIへ渡せる。GeminiへはワンクリックコピーでOK。</div>
     </div>
   </div>
 </div>
 
 <div class="divider" style="max-width:960px; margin:0 auto;"></div>
 
-<!-- 笏笏 02 逕ｻ髱｢ 笏笏 -->
+<!-- ── 02 画面 ── -->
 <div class="section">
-  <div class="section-number">02 窶・繝・・繝ｫ縺ｮ逕ｻ髱｢</div>
+  <div class="section-number">02 — ツールの画面</div>
   <div class="section-title">SCREENS</div>
 
   <div class="screens-grid">
@@ -930,14 +930,14 @@ body::before {
     <div class="screen-item">
       <div class="screen-label">
         <div class="screen-dot" style="background:var(--broadcast);"></div>
-        <div class="screen-label-text">BROADCAST MODE 窶・蜈ｨ蜩｡縺ｫ蜷梧凾謚輔￡</div>
+        <div class="screen-label-text">BROADCAST MODE — 全員に同時投げ</div>
       </div>
       <div class="screen-body">
         <div class="mini-header">
           <div class="mini-logo">BRI<span>D</span>GE</div>
           <div style="display:flex;align-items:center;gap:8px;">
-            <div style="font-family:'DM Mono',monospace;font-size:9px;color:var(--text-muted);">Sonnet 4.6 笆ｾ</div>
-            <div class="mini-badge bc">笳・BROADCAST</div>
+            <div style="font-family:'DM Mono',monospace;font-size:9px;color:var(--text-muted);">Sonnet 4.6 ▾</div>
+            <div class="mini-badge bc">● BROADCAST</div>
           </div>
         </div>
         <div class="mini-grid mini-grid-4">
@@ -946,38 +946,38 @@ body::before {
               <div class="mini-avatar cos">CoS</div>
               <div class="mini-agent-name cos-c">Claude CoS</div>
             </div>
-            <div class="mini-text">險ｭ險井ｸ翫・譬ｸ蠢・噪蛻・ｲ千せ縺ｯ3縺､縺ゅｊ縺ｾ縺吶ゅ∪縺壼ｾ・ｩ溘・螳夂ｾｩ縺九ｉ謨ｴ逅・ｦ</div>
-            <div class="mini-btn">縺薙・莠ｺ縺ｧ邯壹￠繧・竊・/div>
+            <div class="mini-text">設計上の核心的分岐点は3つあります。まず待機の定義から整理…</div>
+            <div class="mini-btn">この人で続ける →</div>
           </div>
           <div class="mini-panel">
             <div class="mini-agent-head">
               <div class="mini-avatar chro">CHR</div>
               <div class="mini-agent-name chro-c">Claude CHRO</div>
             </div>
-            <div class="mini-text">繝・・繝ｫ縺ｮ蜑阪↓蝠上＞逶ｴ縺励◆縺・％縺ｨ縺後≠繧翫∪縺吶ゅ↑縺・縺､繧定｡後″譚･縺吶ｋ縺薙→縺ｫ縺ｪ縺｣縺溘・縺銀ｦ</div>
-            <div class="mini-btn">縺薙・莠ｺ縺ｧ邯壹￠繧・竊・/div>
+            <div class="mini-text">ツールの前に問い直したいことがあります。なぜ4つを行き来することになったのか…</div>
+            <div class="mini-btn">この人で続ける →</div>
           </div>
           <div class="mini-panel">
             <div class="mini-agent-head">
               <div class="mini-avatar gcos">GCS</div>
               <div class="mini-agent-name gcos-c">Gemini CoS</div>
             </div>
-            <div class="mini-text">莠句ｮ溘→隗｣驥医ｒ蛻・￠繧九→縲∫ｧｻ蜍輔さ繧ｹ繝医′譛ｬ雉ｪ逧・↑隱ｲ鬘後〒縺吶ゆｻ慕ｵ・∩縺ｮ隕ｳ轤ｹ縺九ｉ窶ｦ</div>
-            <div class="mini-btn">縺薙・莠ｺ縺ｧ邯壹￠繧・竊・/div>
+            <div class="mini-text">事実と解釈を分けると、移動コストが本質的な課題です。仕組みの観点から…</div>
+            <div class="mini-btn">この人で続ける →</div>
           </div>
           <div class="mini-panel">
             <div class="mini-agent-head">
               <div class="mini-avatar gchro">GCH</div>
               <div class="mini-agent-name gchro-c">Gemini CHRO</div>
             </div>
-            <div class="mini-text">莠ｺ縺・縺､縺ｮ繝√Ε繝・ヨ繧定｡後″譚･縺吶ｋ迥ｶ諷九・縲∬ｪ咲衍雋闕ｷ縺ｮ隕ｳ轤ｹ縺九ｉ髱槫ｸｸ縺ｫ繧ｳ繧ｹ繝医′窶ｦ</div>
-            <div class="mini-btn">縺薙・莠ｺ縺ｧ邯壹￠繧・竊・/div>
+            <div class="mini-text">人が4つのチャットを行き来する状態は、認知負荷の観点から非常にコストが…</div>
+            <div class="mini-btn">この人で続ける →</div>
           </div>
         </div>
         <div class="mini-input-bar">
-          <div class="mini-toggle">笳・蜈ｨ蜩｡縺ｫ騾√ｋ</div>
+          <div class="mini-toggle">● 全員に送る</div>
           <div class="mini-input"></div>
-          <div class="mini-send">騾∽ｿ｡</div>
+          <div class="mini-send">送信</div>
         </div>
       </div>
     </div>
@@ -986,13 +986,13 @@ body::before {
     <div class="screen-item">
       <div class="screen-label">
         <div class="screen-dot" style="background:var(--focus);"></div>
-        <div class="screen-label-text">FOCUS MODE 窶・1莠ｺ縺ｨ豺ｱ謗倥ｊ繝ｻ莉悶・繧ｿ繝悶↓謚倥ｊ逡ｳ縺ｿ</div>
+        <div class="screen-label-text">FOCUS MODE — 1人と深掘り・他はタブに折り畳み</div>
       </div>
       <div class="screen-body">
         <div class="mini-header">
           <div class="mini-logo">BRI<span>D</span>GE</div>
           <div style="display:flex;align-items:center;gap:8px;">
-            <div style="font-family:'DM Mono',monospace;font-size:9px;color:var(--text-muted);">Opus 4.7 笆ｾ</div>
+            <div style="font-family:'DM Mono',monospace;font-size:9px;color:var(--text-muted);">Opus 4.7 ▾</div>
             <div class="mini-badge fc">FOCUS : CoS</div>
           </div>
         </div>
@@ -1000,12 +1000,12 @@ body::before {
           <div class="mini-focus-main">
             <div class="mini-agent-head">
               <div class="mini-avatar cos">CoS</div>
-              <div class="mini-agent-name cos-c">Claude CoS 窶・豺ｱ謗倥ｊ荳ｭ</div>
+              <div class="mini-agent-name cos-c">Claude CoS — 深掘り中</div>
             </div>
-            <div class="mini-bubble user">HANDOFF縺ｧ貂｡縺呎凾縲∽ｼ夊ｩｱ螻･豁ｴ縺ｯ縺ｩ繧薙↑繝輔か繝ｼ繝槭ャ繝医′譛驕ｩ縺具ｼ・/div>
-            <div class="mini-bubble cos">讒矩蛹悶ユ繧ｭ繧ｹ繝医′譛驕ｩ縺ｧ縺吶・emini縺瑚ｿｷ繧上★隱ｭ繧√ｋ繧医≧窶ｦ</div>
-            <div class="mini-bubble user">繝ｯ繝ｳ繧ｯ繝ｪ繝・け縺ｧ繧ｳ繝斐・縺ｧ縺阪ｋ繧医≧縺ｫ縺励※縺ｻ縺励＞</div>
-            <div class="mini-handoff-btn">HANDOFF 竊・/div>
+            <div class="mini-bubble user">HANDOFFで渡す時、会話履歴はどんなフォーマットが最適か？</div>
+            <div class="mini-bubble cos">構造化テキストが最適です。Geminiが迷わず読めるよう…</div>
+            <div class="mini-bubble user">ワンクリックでコピーできるようにしてほしい</div>
+            <div class="mini-handoff-btn">HANDOFF →</div>
           </div>
           <div class="mini-tab-area">
             <div class="mini-tab">CHRO</div>
@@ -1014,9 +1014,9 @@ body::before {
           </div>
         </div>
         <div class="mini-input-bar">
-          <div class="mini-toggle" style="border-color:var(--border-bright);color:var(--text-muted);background:transparent;">笳・荳莠ｺ縺ｫ騾√ｋ</div>
+          <div class="mini-toggle" style="border-color:var(--border-bright);color:var(--text-muted);background:transparent;">○ 一人に送る</div>
           <div class="mini-input"></div>
-          <div class="mini-send">騾∽ｿ｡</div>
+          <div class="mini-send">送信</div>
         </div>
       </div>
     </div>
@@ -1025,27 +1025,27 @@ body::before {
     <div class="screen-item">
       <div class="screen-label">
         <div class="screen-dot" style="background:var(--handoff);"></div>
-        <div class="screen-label-text">HANDOFF 窶・莨夊ｩｱ螻･豁ｴ縺斐→蛻･縺ｮAI縺ｸ蠑輔″邯吶℃</div>
+        <div class="screen-label-text">HANDOFF — 会話履歴ごと別のAIへ引き継ぎ</div>
       </div>
       <div class="screen-body">
         <div style="background:var(--bg);border:1px solid var(--border-bright);border-radius:8px;padding:20px;">
-          <div style="font-family:'DM Mono',monospace;font-size:11px;color:var(--handoff);margin-bottom:16px;letter-spacing:2px;">HANDOFF ﾂｷ CHRO縺ｸ蠑輔″邯吶＄</div>
+          <div style="font-family:'DM Mono',monospace;font-size:11px;color:var(--handoff);margin-bottom:16px;letter-spacing:2px;">HANDOFF · CHROへ引き継ぐ</div>
           <div style="background:var(--surface2);border:1px solid var(--border);border-radius:4px;padding:12px;font-family:'DM Mono',monospace;font-size:10px;line-height:1.8;color:var(--text-muted);">
             <span style="color:var(--handoff);">=== BRIDGE HANDOFF ===</span><br>
-            譌･譎ゑｼ・026/06/03 09:34<br>
-            繝｢繝ｼ繝会ｼ咤ROADCAST 竊・FOCUS(CoS)<br><br>
-            <span style="color:var(--handoff);">縲殖ROADCAST縲・/span><br>
-            遉ｾ髟ｷ・壹ヤ繝ｼ繝ｫ險ｭ險医↓縺､縺・※窶ｦ<br>
-            CoS・夊ｨｭ險井ｸ翫・譬ｸ蠢・噪窶ｦ<br><br>
-            <span style="color:var(--handoff);">縲仙ｼ輔″邯吶℃隲也せ縲・/span><br>
-            繝ｻ迴ｾ蝨ｨ縺ｮ蝠上＞・壹ヵ繧ｩ繝ｼ繝槭ャ繝育｢ｺ隱・br>
-            繝ｻ遒ｺ螳壻ｺ矩・ｼ壽ｧ矩蛹悶ユ繧ｭ繧ｹ繝域婿蠑・br>
-            繝ｻ譛ｪ豎ｺ莠矩・ｼ哦emini蛛ｴ繝励Ο繝ｳ繝励ヨ<br><br>
+            日時：2026/06/03 09:34<br>
+            モード：BROADCAST → FOCUS(CoS)<br><br>
+            <span style="color:var(--handoff);">【BROADCAST】</span><br>
+            社長：ツール設計について…<br>
+            CoS：設計上の核心的…<br><br>
+            <span style="color:var(--handoff);">【引き継ぎ論点】</span><br>
+            ・現在の問い：フォーマット確認<br>
+            ・確定事項：構造化テキスト方式<br>
+            ・未決事項：Gemini側プロンプト<br><br>
             <span style="color:var(--handoff);">=== HANDOFF END ===</span>
           </div>
           <div style="display:flex;justify-content:flex-end;gap:8px;margin-top:16px;">
-            <div style="padding:6px 14px;border:1px solid var(--border-bright);border-radius:4px;font-family:'DM Mono',monospace;font-size:10px;color:var(--text-secondary);">繧ｭ繝｣繝ｳ繧ｻ繝ｫ</div>
-            <div style="padding:6px 14px;border:1px solid var(--handoff);border-radius:4px;background:rgba(200,75,232,0.12);font-family:'DM Mono',monospace;font-size:10px;color:var(--handoff);">繝ｯ繝ｳ繧ｯ繝ｪ繝・け繧ｳ繝斐・</div>
+            <div style="padding:6px 14px;border:1px solid var(--border-bright);border-radius:4px;font-family:'DM Mono',monospace;font-size:10px;color:var(--text-secondary);">キャンセル</div>
+            <div style="padding:6px 14px;border:1px solid var(--handoff);border-radius:4px;background:rgba(200,75,232,0.12);font-family:'DM Mono',monospace;font-size:10px;color:var(--handoff);">ワンクリックコピー</div>
           </div>
         </div>
       </div>
@@ -1056,40 +1056,40 @@ body::before {
 
 <div class="divider" style="max-width:960px; margin:0 auto;"></div>
 
-<!-- 笏笏 03 菴ｿ縺・婿 笏笏 -->
+<!-- ── 03 使い方 ── -->
 <div class="section">
-  <div class="section-number">03 窶・菴ｿ縺・婿</div>
+  <div class="section-number">03 — 使い方</div>
   <div class="section-title">HOW IT WORKS</div>
 
   <div class="modes-grid">
     <div class="mode-card">
       <div class="mode-number">01</div>
       <div class="mode-name">BROADCAST</div>
-      <div class="mode-desc">1縺､縺ｮ蝠上＞繧・莠ｺ蜈ｨ蜩｡縺ｫ蜷梧凾謚穂ｸ九ょ・蜩｡縺ｮ蝗樒ｭ斐′謠・▲縺ｦ縺九ｉ荳譁芽｡ｨ遉ｺ縺輔ｌ繧九ら判髱｢縺ｯ蜍輔°縺ｪ縺・・/div>
+      <div class="mode-desc">1つの問いを4人全員に同時投下。全員の回答が揃ってから一斉表示される。画面は動かない。</div>
       <div class="mode-flow">
-        蜈･蜉・竊・騾∽ｿ｡<br>
-        竊・4蛻励げ繝ｪ繝・ラ縺ｧ蜷梧凾陦ｨ遉ｺ<br>
-        竊・隱ｭ縺ｿ豈斐∋縺ｦ驕ｸ縺ｶ
+        入力 → 送信<br>
+        → 4列グリッドで同時表示<br>
+        → 読み比べて選ぶ
       </div>
     </div>
     <div class="mode-card">
       <div class="mode-number">02</div>
       <div class="mode-name">FOCUS</div>
-      <div class="mode-desc">縲後％縺ｮ莠ｺ縺ｧ邯壹￠繧九阪ｒ謚ｼ縺励◆莠ｺ縺悟・蟷・↓螻暮幕縲ゆｻ悶・3莠ｺ縺ｯ繧ｿ繝悶↓謚倥ｊ逡ｳ縺ｾ繧後√＞縺､縺ｧ繧ょ他縺ｳ謌ｻ縺帙ｋ縲・/div>
+      <div class="mode-desc">「この人で続ける」を押した人が全幅に展開。他の3人はタブに折り畳まれ、いつでも呼び戻せる。</div>
       <div class="mode-flow">
-        驕ｸ謚・竊・FOCUS遘ｻ陦・br>
-        竊・1蟇ｾ1縺ｧ豺ｱ謗倥ｊ<br>
-        竊・蠖｢縺ｫ縺ｪ縺｣縺溘ｉHANDOFF
+        選択 → FOCUS移行<br>
+        → 1対1で深掘り<br>
+        → 形になったらHANDOFF
       </div>
     </div>
     <div class="mode-card">
       <div class="mode-number">03</div>
       <div class="mode-name">HANDOFF</div>
-      <div class="mode-desc">莨夊ｩｱ螻･豁ｴ繧呈ｧ矩蛹悶ユ繧ｭ繧ｹ繝医↓螟画鋤縲ゅΡ繝ｳ繧ｯ繝ｪ繝・け繧ｳ繝斐・縺ｧ蛻･縺ｮAI縺ｸ貂｡縺帙ｋ縲・emini騾｣謳ｺ繧ゅさ繝斐・縺ｧ螳檎ｵ舌・/div>
+      <div class="mode-desc">会話履歴を構造化テキストに変換。ワンクリックコピーで別のAIへ渡せる。Gemini連携もコピペで完結。</div>
       <div class="mode-flow">
-        HANDOFF 竊・繝励Ξ繝薙Η繝ｼ<br>
-        竊・繝ｯ繝ｳ繧ｯ繝ｪ繝・け繧ｳ繝斐・<br>
-        竊・Gemini縺ｫ雋ｼ繧贋ｻ倥￠
+        HANDOFF → プレビュー<br>
+        → ワンクリックコピー<br>
+        → Geminiに貼り付け
       </div>
     </div>
   </div>
@@ -1097,22 +1097,22 @@ body::before {
 
 <div class="divider" style="max-width:960px; margin:0 auto;"></div>
 
-<!-- 笏笏 04 莉墓ｧ・笏笏 -->
+<!-- ── 04 仕様 ── -->
 <div class="section">
-  <div class="section-number">04 窶・譛邨ら｢ｺ螳壻ｻ墓ｧ・/div>
+  <div class="section-number">04 — 最終確定仕様</div>
   <div class="section-title">SPECIFICATION</div>
 
   <div style="margin-bottom:48px;">
-    <div style="font-family:'DM Mono',monospace;font-size:11px;letter-spacing:1.5px;color:var(--text-muted);text-transform:uppercase;margin-bottom:16px;">繧ｨ繝ｼ繧ｸ繧ｧ繝ｳ繝・ﾃ・繝｢繝・Ν蟇ｾ蠢懆｡ｨ</div>
+    <div style="font-family:'DM Mono',monospace;font-size:11px;letter-spacing:1.5px;color:var(--text-muted);text-transform:uppercase;margin-bottom:16px;">エージェント × モデル対応表</div>
     <div class="agent-table-wrap">
       <table class="agent-table">
         <thead>
           <tr>
-            <th>繧ｨ繝ｼ繧ｸ繧ｧ繝ｳ繝・/th>
-            <th>霆ｽ驥上・鬮倬・/th>
-            <th>讓呎ｺ厄ｼ医ョ繝輔か繝ｫ繝茨ｼ・/th>
-            <th>鬮倡ｲｾ蠎ｦ</th>
-            <th>譛荳贋ｽ・/th>
+            <th>エージェント</th>
+            <th>軽量・高速</th>
+            <th>標準（デフォルト）</th>
+            <th>高精度</th>
+            <th>最上位</th>
           </tr>
         </thead>
         <tbody>
@@ -1135,14 +1135,14 @@ body::before {
             <td>Flash-Lite 2.5</td>
             <td>Flash 3.5 <span class="default-badge">DEFAULT</span></td>
             <td>Pro 3.1</td>
-            <td>窶・/td>
+            <td>—</td>
           </tr>
           <tr>
             <td><span class="tag gemini">Gemini</span> CHRO</td>
             <td>Flash-Lite 2.5</td>
             <td>Flash 3.5 <span class="default-badge">DEFAULT</span></td>
             <td>Pro 3.1</td>
-            <td>窶・/td>
+            <td>—</td>
           </tr>
         </tbody>
       </table>
@@ -1150,55 +1150,55 @@ body::before {
   </div>
 
   <div>
-    <div style="font-family:'DM Mono',monospace;font-size:11px;letter-spacing:1.5px;color:var(--text-muted);text-transform:uppercase;margin-bottom:16px;">繧ｷ繧ｹ繝・Β莉墓ｧ・/div>
+    <div style="font-family:'DM Mono',monospace;font-size:11px;letter-spacing:1.5px;color:var(--text-muted);text-transform:uppercase;margin-bottom:16px;">システム仕様</div>
     <div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;overflow:hidden;">
       <table class="spec-table">
         <thead>
           <tr>
-            <th style="width:180px;">鬆・岼</th>
-            <th>蜀・ｮｹ</th>
+            <th style="width:180px;">項目</th>
+            <th>内容</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td class="spec-key">繝帙せ繝・ぅ繝ｳ繧ｰ</td>
+            <td class="spec-key">ホスティング</td>
             <td><span class="tag tech">Vercel</span></td>
           </tr>
           <tr>
-            <td class="spec-key">繝輔Ξ繝ｼ繝繝ｯ繝ｼ繧ｯ</td>
-            <td><span class="tag tech">Next.js</span> <span class="tag tech">Tailwind CSS</span> <span class="tag tech">shadcn/ui・磯Κ蛻・治逕ｨ・・/span></td>
+            <td class="spec-key">フレームワーク</td>
+            <td><span class="tag tech">Next.js</span> <span class="tag tech">Tailwind CSS</span> <span class="tag tech">shadcn/ui（部分採用）</span></td>
           </tr>
           <tr>
             <td class="spec-key">API</td>
             <td><span class="tag claude">Anthropic API</span> <span class="tag gemini">Google AI Studio API</span></td>
           </tr>
           <tr>
-            <td class="spec-key">遏･隴倥・繝ｼ繧ｹ</td>
-            <td>COMPASS蜈ｨ譁・・逕ｨ隱櫁ｾ槫・蜈ｨ譁・・遉ｾ髟ｷ繝｡繝・そ繝ｼ繧ｸ蜈ｨ譁・ｼ医す繧ｹ繝・Β繝励Ο繝ｳ繝励ヨ縺ｫ豌ｸ邯壼沂繧∬ｾｼ縺ｿ・・/td>
+            <td class="spec-key">知識ベース</td>
+            <td>COMPASS全文・用語辞典全文・社長メッセージ全文（システムプロンプトに永続埋め込み）</td>
           </tr>
           <tr>
-            <td class="spec-key">螻･豁ｴ邂｡逅・/td>
-            <td>閾ｪ蜍輔ち繧､繝医Ν莉倅ｸ弱・謇句虚邱ｨ髮・・蜑企勁繝ｻ隴ｰ莠矩鹸閾ｪ蜍慕函謌・/td>
+            <td class="spec-key">履歴管理</td>
+            <td>自動タイトル付与・手動編集・削除・議事録自動生成</td>
           </tr>
           <tr>
-            <td class="spec-key">蟇ｾ蠢懊ョ繝舌う繧ｹ</td>
-            <td>PC・・蛻励げ繝ｪ繝・ラ・・ 繧ｹ繝槭・・・蛻励ち繝門・繧頑崛縺茨ｼ・繝ｬ繧ｹ繝昴Φ繧ｷ繝門ｯｾ蠢・/td>
+            <td class="spec-key">対応デバイス</td>
+            <td>PC（4列グリッド）/ スマホ（1列タブ切り替え） レスポンシブ対応</td>
           </tr>
           <tr>
-            <td class="spec-key">襍ｷ蜍墓婿豕・/td>
-            <td>繝悶Λ繧ｦ繧ｶ縺ｧ蟆ら畑URL縺ｫ繧｢繧ｯ繧ｻ繧ｹ・亥・繝・ヰ繧､繧ｹ蜈ｱ騾夲ｼ・/td>
+            <td class="spec-key">起動方法</td>
+            <td>ブラウザで専用URLにアクセス（全デバイス共通）</td>
           </tr>
           <tr>
-            <td class="spec-key">繧ｻ繧ｭ繝･繝ｪ繝・ぅ</td>
-            <td>API繧ｭ繝ｼ縺ｯ繧ｵ繝ｼ繝舌・繧ｵ繧､繝峨〒邂｡逅・ｼ・ext.js縺ｮServer Actions・峨ゅヶ繝ｩ繧ｦ繧ｶ縺ｫ髴ｲ蜃ｺ縺励↑縺・・/td>
+            <td class="spec-key">セキュリティ</td>
+            <td>APIキーはサーバーサイドで管理（Next.jsのServer Actions）。ブラウザに露出しない。</td>
           </tr>
           <tr>
-            <td class="spec-key">Gemini騾｣謳ｺ</td>
-            <td>HANDOFF縺ｮ讒矩蛹悶ユ繧ｭ繧ｹ繝医ｒ繝ｯ繝ｳ繧ｯ繝ｪ繝・け繧ｳ繝斐・ 竊・Gemini蛛ｴ縺ｫ蜿励￠逧ｿ繝励Ο繝ｳ繝励ヨ繧定ｨｭ鄂ｮ</td>
+            <td class="spec-key">Gemini連携</td>
+            <td>HANDOFFの構造化テキストをワンクリックコピー → Gemini側に受け皿プロンプトを設置</td>
           </tr>
           <tr>
-            <td class="spec-key">繝｢繝・Ν譖ｴ譁ｰ</td>
-            <td>MVP・壽焔蜍戊ｿｽ蜉 / Phase2・哂PI縺九ｉ閾ｪ蜍募叙蠕・/td>
+            <td class="spec-key">モデル更新</td>
+            <td>MVP：手動追加 / Phase2：APIから自動取得</td>
           </tr>
         </tbody>
       </table>
@@ -1208,150 +1208,150 @@ body::before {
 
 <div class="divider" style="max-width:960px; margin:0 auto;"></div>
 
-<!-- 笏笏 05 蟾･螟ｫ 笏笏 -->
+<!-- ── 05 工夫 ── -->
 <div class="section">
-  <div class="section-number">05 窶・蟾･螟ｫ縺励◆繝昴う繝ｳ繝・/div>
+  <div class="section-number">05 — 工夫したポイント</div>
   <div class="section-title">INSIGHTS</div>
 
   <div class="insight-grid">
     <div class="insight-card">
-      <div class="insight-tag good">笨ｦ 蟾･螟ｫ</div>
-      <div class="insight-title">螢∵遠縺｡縺ｧ險ｭ險医ｒ螳悟・縺ｫ隧ｰ繧∝・縺｣縺・/div>
-      <div class="insight-body">繧ｳ繝ｼ繝峨ｒ1陦後ｂ譖ｸ縺丞燕縺ｫ縲∝｣∵遠縺｡縺ｧ隕∽ｻｶ繧貞ｮ悟・險隱槫喧縲ゅ御ｼ夊ｭｰ螳､縲阪→縺・≧莉ｮ隱ｬ縺後梧叛騾∝ｱ縲阪↓螟峨ｏ繧翫・莠ｺ繝｢繝ｼ繝峨′荳崎ｦ√→蛻､譏弱☆繧九↑縺ｩ縲∬ｨｭ險医・邊ｾ蠎ｦ縺梧ｼ谿ｵ縺ｫ荳翫′縺｣縺溘・/div>
+      <div class="insight-tag good">✦ 工夫</div>
+      <div class="insight-title">壁打ちで設計を完全に詰め切った</div>
+      <div class="insight-body">コードを1行も書く前に、壁打ちで要件を完全言語化。「会議室」という仮説が「放送局」に変わり、3人モードが不要と判明するなど、設計の精度が格段に上がった。</div>
     </div>
     <div class="insight-card">
-      <div class="insight-tag good">笨ｦ 蟾･螟ｫ</div>
-      <div class="insight-title">縲梧叛騾∝ｱ繝｢繝・Ν縲阪・逋ｺ隕・/div>
-      <div class="insight-body">蠖灘・縲・莠ｺ縺ｮ莨夊ｭｰ螳､縲阪→縺励※險ｭ險医＠縺ｦ縺・◆縺後∝｣∵遠縺｡縺ｧ縲檎､ｾ髟ｷ縺縺代′蜈ｨ蜩｡縺ｨ蟇ｾ隧ｱ縺吶ｋ縲阪→縺・≧逵溘・隕∽ｻｶ縺檎匱隕壹ゆｼ夊ｭｰ螳､縺ｧ縺ｯ縺ｪ縺乗欠莉､繧ｻ繝ｳ繧ｿ繝ｼ縺ｨ縺・≧險ｭ險医↓霆｢謠帙＠縺溘・/div>
+      <div class="insight-tag good">✦ 工夫</div>
+      <div class="insight-title">「放送局モデル」の発見</div>
+      <div class="insight-body">当初「3人の会議室」として設計していたが、壁打ちで「社長だけが全員と対話する」という真の要件が発覚。会議室ではなく指令センターという設計に転換した。</div>
     </div>
     <div class="insight-card">
-      <div class="insight-tag good">笨ｦ 蟾･螟ｫ</div>
-      <div class="insight-title">HANDOFF繝輔か繝ｼ繝槭ャ繝医・險ｭ險・/div>
-      <div class="insight-body">Gemini API騾｣謳ｺ縺ｮ莉｣繧上ｊ縺ｫ縲∵ｧ矩蛹悶ユ繧ｭ繧ｹ繝茨ｼ九Ρ繝ｳ繧ｯ繝ｪ繝・け繧ｳ繝斐・縺ｨ縺・≧驕狗畑險ｭ險医ｒ謗｡逕ｨ縲よ橿陦鍋噪隍・尅縺輔ぞ繝ｭ縺ｧ縲∝ｮ溯ｳｪ逧・↓Gemini騾｣謳ｺ縺ｨ蜷檎ｭ峨・菴馴ｨ薙ｒ螳溽樟縺励◆縲・/div>
+      <div class="insight-tag good">✦ 工夫</div>
+      <div class="insight-title">HANDOFFフォーマットの設計</div>
+      <div class="insight-body">Gemini API連携の代わりに、構造化テキスト＋ワンクリックコピーという運用設計を採用。技術的複雑さゼロで、実質的にGemini連携と同等の体験を実現した。</div>
     </div>
     <div class="insight-card">
-      <div class="insight-tag good">笨ｦ 蟾･螟ｫ</div>
-      <div class="insight-title">蜷梧凾陦ｨ遉ｺ繝ｻ逕ｻ髱｢縺悟虚縺九↑縺・ｨｭ險・/div>
-      <div class="insight-body">縲瑚ｪｭ繧薙〒縺・ｋ騾比ｸｭ縺ｫ逕ｻ髱｢縺悟虚縺上・縺ｯ雖後□縲阪→縺・≧遉ｾ髟ｷ縺ｮ荳險縺九ｉ縲∝・蜩｡縺ｮ蝗樒ｭ斐′謠・▲縺ｦ縺九ｉ荳譁芽｡ｨ遉ｺ縺吶ｋ險ｭ險医ｒ謗｡逕ｨ縲る溘＆繧医ｊ螳牙ｮ壽ｧ繧貞━蜈医＠縺溘・/div>
+      <div class="insight-tag good">✦ 工夫</div>
+      <div class="insight-title">同時表示・画面が動かない設計</div>
+      <div class="insight-body">「読んでいる途中に画面が動くのは嫌だ」という社長の一言から、全員の回答が揃ってから一斉表示する設計を採用。速さより安定性を優先した。</div>
     </div>
     <div class="insight-card">
-      <div class="insight-tag good">笨ｦ 蟾･螟ｫ</div>
-      <div class="insight-title">繝｢繝・Ν驕ｸ謚槭ぎ繧､繝峨・蜀・桁</div>
-      <div class="insight-body">繝峨Ο繝・・繝繧ｦ繝ｳ繧帝幕縺・◆迸ｬ髢薙↓蜷・Δ繝・Ν縺ｮ逕ｨ騾碑ｪｬ譏弱′陦ｨ遉ｺ縺輔ｌ繧玖ｨｭ險医ゅ後←縺ｮ繝｢繝・Ν繧帝∈縺ｶ縺九阪・蛻､譁ｭ繧ｳ繧ｹ繝医ｒ繧ｼ繝ｭ縺ｫ縺励◆縲・/div>
+      <div class="insight-tag good">✦ 工夫</div>
+      <div class="insight-title">モデル選択ガイドの内包</div>
+      <div class="insight-body">ドロップダウンを開いた瞬間に各モデルの用途説明が表示される設計。「どのモデルを選ぶか」の判断コストをゼロにした。</div>
     </div>
     <div class="insight-card">
-      <div class="insight-tag good">笨ｦ 蟾･螟ｫ</div>
-      <div class="insight-title">遏･隴倥・繝ｼ繧ｹ縺ｮ繝輔Ν蝓九ａ霎ｼ縺ｿ</div>
-      <div class="insight-body">COMPASS繝ｻ逕ｨ隱櫁ｾ槫・繝ｻ遉ｾ髟ｷ繝｡繝・そ繝ｼ繧ｸ繧貞・譁・す繧ｹ繝・Β繝励Ο繝ｳ繝励ヨ縺ｫ蝓九ａ霎ｼ繧譯・繧呈治逕ｨ縲ゅヨ繝ｼ繧ｯ繝ｳ繧ｳ繧ｹ繝医ｈ繧雁愛譁ｭ縺ｮ雉ｪ繧貞━蜈医☆繧九→縺・≧諢乗晄ｱｺ螳壹・/div>
+      <div class="insight-tag good">✦ 工夫</div>
+      <div class="insight-title">知識ベースのフル埋め込み</div>
+      <div class="insight-body">COMPASS・用語辞典・社長メッセージを全文システムプロンプトに埋め込む案Bを採用。トークンコストより判断の質を優先するという意思決定。</div>
     </div>
   </div>
 </div>
 
 <div class="divider" style="max-width:960px; margin:0 auto;"></div>
 
-<!-- 笏笏 06 闍ｦ謌ｦ 笏笏 -->
+<!-- ── 06 苦戦 ── -->
 <div class="section">
-  <div class="section-number">06 窶・闍ｦ謌ｦ縺励◆繝昴う繝ｳ繝・/div>
+  <div class="section-number">06 — 苦戦したポイント</div>
   <div class="section-title">CHALLENGES</div>
 
   <div class="insight-grid">
     <div class="insight-card">
-      <div class="insight-tag hard">笨・闍ｦ謌ｦ</div>
-      <div class="insight-title">縲御ｼ夊ｭｰ螳､縲崎ｨｭ險医°繧峨・螟ｧ蟷・ｿｮ豁｣</div>
-      <div class="insight-body">譛蛻昴・險ｭ險医・縲靴oS繝ｻCHRO繝ｻ遉ｾ髟ｷ縺ｮ3莠ｺ莨夊ｭｰ螳､縲阪□縺｣縺溘ょ｣∵遠縺｡縺ｧ縲檎､ｾ髟ｷ縺縺代′蜈ｨ蜩｡縺ｨ隧ｱ縺吶阪→縺・≧莠句ｮ溘′逋ｺ隕壹＠縲∬ｨｭ險医ｒ蜈ｨ髱｢逧・↓菴懊ｊ逶ｴ縺励◆縲・/div>
+      <div class="insight-tag hard">✕ 苦戦</div>
+      <div class="insight-title">「会議室」設計からの大幅修正</div>
+      <div class="insight-body">最初の設計は「CoS・CHRO・社長の3人会議室」だった。壁打ちで「社長だけが全員と話す」という事実が発覚し、設計を全面的に作り直した。</div>
     </div>
     <div class="insight-card">
-      <div class="insight-tag hard">笨・闍ｦ謌ｦ</div>
-      <div class="insight-title">Artifact 竊・Web繧｢繝励Μ縺ｸ縺ｮ霍ｯ邱壼､画峩</div>
-      <div class="insight-body">蠖灘・Claude縺ｮArtifact縺ｨ縺励※螳溯｣・ｺ亥ｮ壹□縺｣縺溘′縲√瑚ご縺ｦ縺ｦ菴ｿ縺・ｶ壹￠縺溘＞縲阪→縺・≧荳險縺ｧ險ｭ險医′螟峨ｏ縺｣縺溘ら衍隴倥・繝ｼ繧ｹ縺ｮ蜈ｨ譁・沂繧∬ｾｼ縺ｿ・矩聞譛滄°逕ｨ繧定・∴繧九→Web繧｢繝励Μ縺梧ｭ｣隗｣縺ｨ蛻､譁ｭ縲・/div>
+      <div class="insight-tag hard">✕ 苦戦</div>
+      <div class="insight-title">Artifact → Webアプリへの路線変更</div>
+      <div class="insight-body">当初ClaudeのArtifactとして実装予定だったが、「育てて使い続けたい」という一言で設計が変わった。知識ベースの全文埋め込み＋長期運用を考えるとWebアプリが正解と判断。</div>
     </div>
     <div class="insight-card">
-      <div class="insight-tag hard">笨・闍ｦ謌ｦ</div>
-      <div class="insight-title">API繧ｭ繝ｼ縺ｮ繧ｻ繧ｭ繝･繝ｪ繝・ぅ蝠城｡・/div>
-      <div class="insight-body">繧ｯ繝ｩ繧､繧｢繝ｳ繝医し繧､繝峨↓API繧ｭ繝ｼ繧堤ｽｮ縺上→繝悶Λ繧ｦ繧ｶ縺九ｉ荳ｸ隕九∴縺ｫ縺ｪ繧句撫鬘後・ext.js縺ｮ繧ｵ繝ｼ繝舌・繧ｵ繧､繝牙・逅・〒隗｣豎ｺ縺励◆縺後∝ｽ灘・Artifact繧貞燕謠舌↓閠・∴縺ｦ縺・◆縺溘ａ險ｭ險医・隕狗峩縺励′蠢・ｦ√□縺｣縺溘・/div>
+      <div class="insight-tag hard">✕ 苦戦</div>
+      <div class="insight-title">APIキーのセキュリティ問題</div>
+      <div class="insight-body">クライアントサイドにAPIキーを置くとブラウザから丸見えになる問題。Next.jsのサーバーサイド処理で解決したが、当初Artifactを前提に考えていたため設計の見直しが必要だった。</div>
     </div>
     <div class="insight-card">
-      <div class="insight-tag hard">笨・闍ｦ謌ｦ</div>
-      <div class="insight-title">Gemini騾｣謳ｺ縺ｮ譁ｹ驥晁ｻ｢謠・/div>
-      <div class="insight-body">Artifact譎ゆｻ｣縺ｯGemini騾｣謳ｺ繧単hase2・医さ繝斐・驕狗畑・峨↓蠕悟屓縺励↓縺励◆縲８eb繧｢繝励Μ縺ｫ螟峨ｏ縺｣縺溽椪髢薙↓謚陦鍋噪繝上・繝峨Ν縺悟酔縺倥↓縺ｪ繧翫￣hase1縺九ｉ邨・∩霎ｼ繧蛻､譁ｭ縺ｫ螟画峩縲・/div>
+      <div class="insight-tag hard">✕ 苦戦</div>
+      <div class="insight-title">Gemini連携の方針転換</div>
+      <div class="insight-body">Artifact時代はGemini連携をPhase2（コピペ運用）に後回しにした。Webアプリに変わった瞬間に技術的ハードルが同じになり、Phase1から組み込む判断に変更。</div>
     </div>
     <div class="insight-card">
-      <div class="insight-tag hard">笨・闍ｦ謌ｦ</div>
-      <div class="insight-title">襍ｷ蜍墓婿豕輔・隱､隱崎ｭ・/div>
-      <div class="insight-body">縲靴laude繝励Ο繧ｸ繧ｧ繧ｯ繝医°繧芽ｵｷ蜍輔阪→隱､縺｣縺ｦ隱ｬ譏弱＠縺ｦ縺励∪縺・ｴ髱｢縺後≠縺｣縺溘８eb繧｢繝励Μ縺ｯ縲後ヶ繝ｩ繧ｦ繧ｶ縺ｧ蟆ら畑URL縺ｫ繧｢繧ｯ繧ｻ繧ｹ縲阪′豁｣縺励＞縲・rtifact縺ｨWeb繧｢繝励Μ縺ｮ驕輔＞縺ｮ隱ｬ譏弱′髮｣縺励°縺｣縺溘・/div>
+      <div class="insight-tag hard">✕ 苦戦</div>
+      <div class="insight-title">起動方法の誤認識</div>
+      <div class="insight-body">「Claudeプロジェクトから起動」と誤って説明してしまう場面があった。Webアプリは「ブラウザで専用URLにアクセス」が正しい。ArtifactとWebアプリの違いの説明が難しかった。</div>
     </div>
     <div class="insight-card">
-      <div class="insight-tag hard">笨・闍ｦ謌ｦ</div>
-      <div class="insight-title">螻･豁ｴ邂｡逅・・隕玖誠縺ｨ縺・/div>
-      <div class="insight-body">蠖灘・縺ｯ螻･豁ｴ邂｡逅・ｒ險ｭ險医↓蜷ｫ繧√※縺・↑縺九▲縺溘ゅ瑚・螟ｧ縺ｪ螻･豁ｴ縺後せ繝医ャ繧ｯ縺輔ｌ繧九・縺ｧ縺ｯ・溘阪→縺・≧遉ｾ髟ｷ縺ｮ謖・遭縺ｧ逋ｺ隕壹り・蜍輔ち繧､繝医Ν繝ｻ邱ｨ髮・・蜑企勁繝ｻ隴ｰ莠矩鹸逕滓・繧貞ｾ後°繧芽ｿｽ蜉縺励◆縲・/div>
+      <div class="insight-tag hard">✕ 苦戦</div>
+      <div class="insight-title">履歴管理の見落とし</div>
+      <div class="insight-body">当初は履歴管理を設計に含めていなかった。「膨大な履歴がストックされるのでは？」という社長の指摘で発覚。自動タイトル・編集・削除・議事録生成を後から追加した。</div>
     </div>
   </div>
 </div>
 
 <div class="divider" style="max-width:960px; margin:0 auto;"></div>
 
-<!-- 笏笏 07 髢狗匱謇矩・笏笏 -->
+<!-- ── 07 開発手順 ── -->
 <div class="section">
-  <div class="section-number">07 窶・髢狗匱謇矩・/div>
+  <div class="section-number">07 — 開発手順</div>
   <div class="section-title">DEVELOPMENT</div>
 
   <div class="steps-list">
     <div class="step">
       <div class="step-num">STEP 01</div>
-      <div class="step-title">API繧ｭ繝ｼ縺ｮ蜿門ｾ・/div>
-      <div class="step-desc">Anthropic・・onsole.anthropic.com・峨→Google AI Studio・・i.google.dev・峨〒API繧ｭ繝ｼ繧貞叙蠕励ゅけ繝ｬ繧ｸ繝・ヨ繧ｫ繝ｼ繝臥匳骭ｲ縺悟ｿ・ｦ√・/div>
-      <div class="step-code">謇隕∵凾髢難ｼ夂ｴ・5蛻・/div>
+      <div class="step-title">APIキーの取得</div>
+      <div class="step-desc">Anthropic（console.anthropic.com）とGoogle AI Studio（ai.google.dev）でAPIキーを取得。クレジットカード登録が必要。</div>
+      <div class="step-code">所要時間：約15分</div>
     </div>
     <div class="step">
       <div class="step-num">STEP 02</div>
-      <div class="step-title">Vercel繧｢繧ｫ繧ｦ繝ｳ繝医・菴懈・</div>
-      <div class="step-desc">vercel.com縺ｫ繧｢繧ｯ繧ｻ繧ｹ縺励；itHub繧｢繧ｫ繧ｦ繝ｳ繝医〒繝ｭ繧ｰ繧､繝ｳ縲よ眠隕冗匳骭ｲ荳崎ｦ√・/div>
-      <div class="step-code">謇隕∵凾髢難ｼ夂ｴ・蛻・/div>
+      <div class="step-title">Vercelアカウントの作成</div>
+      <div class="step-desc">vercel.comにアクセスし、GitHubアカウントでログイン。新規登録不要。</div>
+      <div class="step-code">所要時間：約3分</div>
     </div>
     <div class="step">
       <div class="step-num">STEP 03</div>
-      <div class="step-title">Next.js繝励Ο繧ｸ繧ｧ繧ｯ繝医・菴懈・</div>
-      <div class="step-desc">GitHub縺ｫBRIDGE繝ｪ繝昴ず繝医Μ繧剃ｽ懈・縲・ext.js + Tailwind CSS + shadcn/ui縺ｮ迺ｰ蠅・ｒ讒狗ｯ峨・/div>
+      <div class="step-title">Next.jsプロジェクトの作成</div>
+      <div class="step-desc">GitHubにBRIDGEリポジトリを作成。Next.js + Tailwind CSS + shadcn/uiの環境を構築。</div>
       <div class="step-code">npx create-next-app@latest bridge --typescript --tailwind</div>
     </div>
     <div class="step">
       <div class="step-num">STEP 04</div>
-      <div class="step-title">遏･隴倥・繝ｼ繧ｹ縺ｮ蝓九ａ霎ｼ縺ｿ</div>
-      <div class="step-desc">COMPASS蜈ｨ譁・・逕ｨ隱櫁ｾ槫・蜈ｨ譁・・遉ｾ髟ｷ繝｡繝・そ繝ｼ繧ｸ蜈ｨ譁・ｒ繧ｷ繧ｹ繝・Β繝励Ο繝ｳ繝励ヨ縺ｨ縺励※螳溯｣・・oS繝ｻCHRO縺昴ｌ縺槭ｌ縺ｫ蠖ｹ蜑ｲ螳夂ｾｩ繧定ｿｽ蜉縲・/div>
+      <div class="step-title">知識ベースの埋め込み</div>
+      <div class="step-desc">COMPASS全文・用語辞典全文・社長メッセージ全文をシステムプロンプトとして実装。CoS・CHROそれぞれに役割定義を追加。</div>
       <div class="step-code">server/prompts/cos.ts<br>server/prompts/chro.ts</div>
     </div>
     <div class="step">
       <div class="step-num">STEP 05</div>
-      <div class="step-title">繧ｨ繝ｼ繧ｸ繧ｧ繝ｳ繝・PI縺ｮ螳溯｣・/div>
-      <div class="step-desc">Anthropic API縺ｨGoogle AI API縺ｸ縺ｮ蜻ｼ縺ｳ蜃ｺ縺励ｒ繧ｵ繝ｼ繝舌・繧ｵ繧､繝峨〒螳溯｣・・繧ｨ繝ｼ繧ｸ繧ｧ繝ｳ繝医・7繝｢繝・Ν縺ｫ蟇ｾ蠢懊・PI繧ｭ繝ｼ縺ｯ繧ｵ繝ｼ繝舌・蛛ｴ縺ｧ邂｡逅・・/div>
+      <div class="step-title">エージェントAPIの実装</div>
+      <div class="step-desc">Anthropic APIとGoogle AI APIへの呼び出しをサーバーサイドで実装。4エージェント・7モデルに対応。APIキーはサーバー側で管理。</div>
       <div class="step-code">app/api/broadcast/route.ts<br>app/api/focus/route.ts</div>
     </div>
     <div class="step">
       <div class="step-num">STEP 06</div>
-      <div class="step-title">BRIDGE UI縺ｮ螳溯｣・/div>
-      <div class="step-desc">4蛻励げ繝ｪ繝・ラ繝ｻFOCUS繝ｻHANDOFF繝ｻ螻･豁ｴ繝代ロ繝ｫ繝ｻ繝｢繝・Ν驕ｸ謚槭ラ繝ｭ繝・・繝繧ｦ繝ｳ繧坦eact縺ｧ螳溯｣・ゅΞ繧ｹ繝昴Φ繧ｷ繝門ｯｾ蠢懶ｼ・C・・蛻・/ 繧ｹ繝槭・・・蛻励ち繝厄ｼ峨・/div>
+      <div class="step-title">BRIDGE UIの実装</div>
+      <div class="step-desc">4列グリッド・FOCUS・HANDOFF・履歴パネル・モデル選択ドロップダウンをReactで実装。レスポンシブ対応（PC：4列 / スマホ：1列タブ）。</div>
       <div class="step-code">components/BroadcastGrid.tsx<br>components/FocusPanel.tsx<br>components/HandoffModal.tsx</div>
     </div>
     <div class="step">
       <div class="step-num">STEP 07</div>
-      <div class="step-title">螻･豁ｴ邂｡逅・・螳溯｣・/div>
-      <div class="step-desc">豌ｸ邯壹せ繝医Ξ繝ｼ繧ｸAPI縺ｧ莨夊ｩｱ螻･豁ｴ繧剃ｿ晏ｭ倥り・蜍輔ち繧､繝医Ν逕滓・繝ｻ邱ｨ髮・・蜑企勁繝ｻ隴ｰ莠矩鹸逕滓・讖溯・繧定ｿｽ蜉縲・/div>
+      <div class="step-title">履歴管理の実装</div>
+      <div class="step-desc">永続ストレージAPIで会話履歴を保存。自動タイトル生成・編集・削除・議事録生成機能を追加。</div>
       <div class="step-code">lib/storage.ts<br>components/HistoryPanel.tsx</div>
     </div>
     <div class="step">
       <div class="step-num">STEP 08</div>
-      <div class="step-title">Vercel縺ｸ縺ｮ繝・・繝ｭ繧､</div>
-      <div class="step-desc">GitHub繝ｪ繝昴ず繝医Μ繧歎ercel縺ｫ謗･邯壹ら腸蠅・､画焚縺ｫAPI繧ｭ繝ｼ繧定ｨｭ螳壹＠縺ｦ繝・・繝ｭ繧､縲ょｰら畑URL縺檎匱陦後＆繧後ｋ縲・/div>
+      <div class="step-title">Vercelへのデプロイ</div>
+      <div class="step-desc">GitHubリポジトリをVercelに接続。環境変数にAPIキーを設定してデプロイ。専用URLが発行される。</div>
       <div class="step-code">ANTHROPIC_API_KEY=sk-ant-...<br>GOOGLE_AI_API_KEY=AIza...</div>
     </div>
   </div>
 </div>
 
-<!-- 笏笏 FOOTER 笏笏 -->
+<!-- ── FOOTER ── -->
 <div class="footer">
   <div class="footer-logo">BRI<span>D</span>GE</div>
   <div class="footer-text">Broadcasting & Routing Intelligence for Decision and Grounding Engine</div>
-  <div style="margin-top:8px;font-family:'DM Mono',monospace;font-size:10px;color:var(--text-muted);">譬ｪ蠑丈ｼ夂､ｾ繝翫ぎ繝阪ヤ 窶・2026</div>
+  <div style="margin-top:8px;font-family:'DM Mono',monospace;font-size:10px;color:var(--text-muted);">株式会社ナガネツ — 2026</div>
 </div>
 
 </body>
