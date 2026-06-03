@@ -1,0 +1,1358 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BRIDGE — プロジェクトドキュメント</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:wght@400;500&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0b0b12;
+  --surface: #13131f;
+  --surface2: #1a1a2a;
+  --border: #252538;
+  --border-bright: #3a3a58;
+  --cos-accent: #e8b84b;
+  --cos-dim: rgba(232,184,75,0.10);
+  --chro-accent: #4b9be8;
+  --chro-dim: rgba(75,155,232,0.10);
+  --gemini-accent: #a0e87a;
+  --gemini-dim: rgba(160,232,122,0.10);
+  --broadcast: #a0e8b8;
+  --focus: #e8a04b;
+  --handoff: #c84be8;
+  --danger: #e84b6a;
+  --text-primary: #e8e8f2;
+  --text-secondary: #d8d8e8;
+  --text-muted: #9898b8;
+  --max-width: 960px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text-primary);
+  font-family: 'Noto Sans JP', sans-serif;
+  font-weight: 300;
+  line-height: 1.7;
+  font-size: 15px;
+}
+
+/* ── NOISE TEXTURE ── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── HERO ── */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 80px 24px;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -200px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(232,184,75,0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.hero-eyebrow {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--cos-accent);
+  margin-bottom: 24px;
+  opacity: 0;
+  animation: fadeUp 0.8s ease 0.2s forwards;
+}
+
+.hero-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(80px, 16vw, 160px);
+  letter-spacing: 16px;
+  line-height: 0.9;
+  color: var(--text-primary);
+  margin-bottom: 32px;
+  opacity: 0;
+  animation: fadeUp 0.8s ease 0.4s forwards;
+}
+
+.hero-title span { color: var(--cos-accent); }
+
+.hero-sub {
+  font-size: 18px;
+  color: var(--text-secondary);
+  max-width: 480px;
+  margin: 0 auto 48px;
+  opacity: 0;
+  animation: fadeUp 0.8s ease 0.6s forwards;
+}
+
+.hero-meta {
+  display: flex;
+  gap: 32px;
+  justify-content: center;
+  flex-wrap: wrap;
+  opacity: 0;
+  animation: fadeUp 0.8s ease 0.8s forwards;
+}
+
+.hero-meta-item {
+  text-align: center;
+}
+
+.hero-meta-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 4px;
+}
+
+.hero-meta-value {
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+.scroll-hint {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  opacity: 0;
+  animation: fadeUp 0.8s ease 1.2s forwards;
+}
+
+.scroll-line {
+  width: 1px;
+  height: 40px;
+  background: linear-gradient(to bottom, var(--cos-accent), transparent);
+  animation: scrollPulse 2s ease infinite;
+}
+
+.scroll-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 2px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
+@keyframes scrollPulse {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 1; }
+}
+
+/* ── SECTIONS ── */
+.section {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 100px 24px;
+  position: relative;
+  z-index: 1;
+}
+
+.section-number {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 2px;
+  color: var(--cos-accent);
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.section-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(36px, 6vw, 56px);
+  letter-spacing: 4px;
+  color: var(--text-primary);
+  margin-bottom: 48px;
+  line-height: 1;
+}
+
+.divider {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(to right, var(--border-bright), transparent);
+  margin-bottom: 80px;
+}
+
+/* ── PROBLEM CARDS ── */
+.problem-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+  margin-bottom: 48px;
+}
+
+.problem-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 28px;
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.3s;
+}
+
+.problem-card:hover { border-color: var(--border-bright); }
+
+.problem-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--danger);
+}
+
+.problem-icon {
+  font-size: 24px;
+  margin-bottom: 16px;
+}
+
+.problem-title {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+}
+
+.problem-desc {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+
+.solution-arrow {
+  text-align: center;
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 2px;
+  color: var(--cos-accent);
+  margin: 32px 0;
+}
+
+.solution-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+}
+
+.solution-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 28px;
+  position: relative;
+  overflow: hidden;
+}
+
+.solution-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--broadcast);
+}
+
+/* ── SCREEN CAPTURES ── */
+.screens-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
+}
+
+.screen-item {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.screen-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 20px;
+  border-bottom: 1px solid var(--border);
+  background: var(--surface2);
+}
+
+.screen-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.screen-label-text {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 1px;
+  color: var(--text-secondary);
+}
+
+.screen-body { padding: 20px; }
+
+/* Mini BROADCAST mockup */
+.mini-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 12px;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 6px 6px 0 0;
+  margin-bottom: 0;
+}
+
+.mini-logo {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 14px;
+  letter-spacing: 3px;
+  color: var(--text-primary);
+}
+
+.mini-logo span { color: var(--cos-accent); }
+
+.mini-badge {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 1px;
+  padding: 3px 8px;
+  border-radius: 3px;
+  border: 1px solid;
+}
+
+.mini-badge.bc {
+  background: rgba(160,232,184,0.08);
+  border-color: rgba(160,232,184,0.3);
+  color: var(--broadcast);
+}
+
+.mini-badge.fc {
+  background: rgba(232,160,75,0.08);
+  border-color: rgba(232,160,75,0.3);
+  color: var(--focus);
+}
+
+.mini-badge.hf {
+  background: rgba(200,75,232,0.08);
+  border-color: rgba(200,75,232,0.3);
+  color: var(--handoff);
+}
+
+.mini-grid {
+  display: grid;
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  border-top: none;
+}
+
+.mini-grid-4 { grid-template-columns: repeat(4, 1fr); }
+.mini-grid-2 { grid-template-columns: 1fr 52px; }
+
+.mini-panel {
+  background: var(--surface);
+  padding: 12px;
+  min-height: 120px;
+}
+
+.mini-agent-head {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 10px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border);
+}
+
+.mini-avatar {
+  width: 20px;
+  height: 20px;
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'DM Mono', monospace;
+  font-size: 7px;
+  flex-shrink: 0;
+}
+
+.mini-avatar.cos { background: var(--cos-dim); color: var(--cos-accent); border: 1px solid rgba(232,184,75,0.3); }
+.mini-avatar.chro { background: var(--chro-dim); color: var(--chro-accent); border: 1px solid rgba(75,155,232,0.3); }
+.mini-avatar.gcos { background: var(--gemini-dim); color: var(--gemini-accent); border: 1px solid rgba(160,232,122,0.3); }
+.mini-avatar.gchro { background: rgba(160,232,122,0.06); color: #7ae8b0; border: 1px solid rgba(122,232,176,0.3); }
+
+.mini-agent-name {
+  font-size: 9px;
+  font-weight: 500;
+}
+
+.cos-c { color: var(--cos-accent); }
+.chro-c { color: var(--chro-accent); }
+.gcos-c { color: var(--gemini-accent); }
+.gchro-c { color: #7ae8b0; }
+
+.mini-text {
+  font-size: 9px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.mini-btn {
+  margin-top: 10px;
+  padding: 4px 8px;
+  border: 1px solid var(--border-bright);
+  border-radius: 3px;
+  font-family: 'DM Mono', monospace;
+  font-size: 8px;
+  color: var(--text-muted);
+  text-align: center;
+}
+
+.mini-input-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-top: none;
+  border-radius: 0 0 6px 6px;
+}
+
+.mini-toggle {
+  font-family: 'DM Mono', monospace;
+  font-size: 8px;
+  padding: 3px 8px;
+  border: 1px solid rgba(160,232,184,0.3);
+  border-radius: 3px;
+  color: var(--broadcast);
+  background: rgba(160,232,184,0.06);
+  white-space: nowrap;
+}
+
+.mini-input {
+  flex: 1;
+  height: 24px;
+  background: var(--surface);
+  border: 1px solid var(--border-bright);
+  border-radius: 3px;
+}
+
+.mini-send {
+  font-family: 'DM Mono', monospace;
+  font-size: 8px;
+  padding: 3px 10px;
+  border: 1px solid var(--border-bright);
+  border-radius: 3px;
+  color: var(--text-secondary);
+  white-space: nowrap;
+}
+
+/* Focus screen */
+.mini-focus-main {
+  background: var(--surface);
+  padding: 12px;
+  min-height: 120px;
+}
+
+.mini-tab-area {
+  background: var(--surface2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 12px 0;
+  gap: 4px;
+}
+
+.mini-tab {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  font-family: 'DM Mono', monospace;
+  font-size: 7px;
+  color: var(--text-muted);
+  letter-spacing: 1px;
+  padding: 8px 4px;
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  background: transparent;
+}
+
+.mini-bubble {
+  padding: 6px 8px;
+  border-radius: 4px;
+  font-size: 8px;
+  line-height: 1.5;
+  margin-bottom: 6px;
+  max-width: 85%;
+}
+
+.mini-bubble.user {
+  background: var(--surface2);
+  border: 1px solid var(--border-bright);
+  margin-left: auto;
+  color: var(--text-secondary);
+}
+
+.mini-bubble.cos {
+  background: var(--cos-dim);
+  border: 1px solid rgba(232,184,75,0.2);
+  color: var(--text-secondary);
+}
+
+.mini-handoff-btn {
+  margin-top: 10px;
+  padding: 4px 10px;
+  border: 1px solid rgba(200,75,232,0.4);
+  border-radius: 3px;
+  background: rgba(200,75,232,0.08);
+  color: var(--handoff);
+  font-family: 'DM Mono', monospace;
+  font-size: 8px;
+  float: right;
+}
+
+/* ── HOW IT WORKS ── */
+.modes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.mode-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 32px 28px;
+  position: relative;
+  overflow: hidden;
+}
+
+.mode-number {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 72px;
+  color: var(--text-muted);
+  line-height: 1;
+  margin-bottom: -8px;
+  opacity: 0.4;
+}
+
+.mode-name {
+  font-family: 'DM Mono', monospace;
+  font-size: 13px;
+  letter-spacing: 2px;
+  font-weight: 500;
+  margin-bottom: 12px;
+}
+
+.mode-card:nth-child(1) .mode-name { color: var(--broadcast); }
+.mode-card:nth-child(2) .mode-name { color: var(--focus); }
+.mode-card:nth-child(3) .mode-name { color: var(--handoff); }
+
+.mode-desc {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+
+.mode-flow {
+  margin-top: 16px;
+  font-family: 'DM Mono', monospace;
+  font-size: 12px;
+  color: var(--text-muted);
+  line-height: 1.8;
+}
+
+/* ── SPEC TABLE ── */
+.spec-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.spec-table th {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  text-align: left;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--border);
+}
+
+.spec-table td {
+  font-size: 14px;
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--border);
+  color: var(--text-secondary);
+  vertical-align: top;
+}
+
+.spec-table tr:last-child td { border-bottom: none; }
+
+.spec-table tr:hover td { background: var(--surface2); }
+
+.spec-key {
+  color: var(--text-primary);
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.tag {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 3px;
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  margin: 2px;
+}
+
+.tag.claude { background: var(--cos-dim); color: var(--cos-accent); border: 1px solid rgba(232,184,75,0.2); }
+.tag.gemini { background: var(--gemini-dim); color: var(--gemini-accent); border: 1px solid rgba(160,232,122,0.2); }
+.tag.tech { background: var(--surface2); color: var(--text-secondary); border: 1px solid var(--border-bright); }
+
+/* ── AGENT TABLE ── */
+.agent-table-wrap {
+  overflow-x: auto;
+}
+
+.agent-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 600px;
+}
+
+.agent-table th {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--border);
+  border-right: 1px solid var(--border);
+  color: var(--text-muted);
+  text-align: center;
+}
+
+.agent-table th:first-child { text-align: left; }
+.agent-table th:last-child { border-right: none; }
+
+.agent-table td {
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--border);
+  border-right: 1px solid var(--border);
+  font-size: 14px;
+  color: var(--text-secondary);
+  text-align: center;
+}
+
+.agent-table td:first-child { text-align: left; font-weight: 500; color: var(--text-primary); }
+.agent-table td:last-child { border-right: none; }
+.agent-table tr:last-child td { border-bottom: none; }
+
+.default-badge {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  padding: 2px 6px;
+  background: var(--cos-dim);
+  color: var(--cos-accent);
+  border: 1px solid rgba(232,184,75,0.3);
+  border-radius: 2px;
+  margin-left: 4px;
+}
+
+/* ── INSIGHT CARDS ── */
+.insight-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.insight-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 28px;
+  position: relative;
+}
+
+.insight-tag {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.insight-tag.good { color: var(--broadcast); }
+.insight-tag.hard { color: var(--danger); }
+
+.insight-title {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--text-primary);
+  margin-bottom: 10px;
+  line-height: 1.4;
+}
+
+.insight-body {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.75;
+}
+
+/* ── DEV STEPS ── */
+.steps-list {
+  position: relative;
+  padding-left: 32px;
+}
+
+.steps-list::before {
+  content: '';
+  position: absolute;
+  left: 10px;
+  top: 8px;
+  bottom: 8px;
+  width: 1px;
+  background: linear-gradient(to bottom, var(--cos-accent), var(--border));
+}
+
+.step {
+  position: relative;
+  margin-bottom: 40px;
+}
+
+.step:last-child { margin-bottom: 0; }
+
+.step::before {
+  content: '';
+  position: absolute;
+  left: -26px;
+  top: 6px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--cos-accent);
+  border: 2px solid var(--bg);
+  box-shadow: 0 0 0 1px var(--cos-accent);
+}
+
+.step-num {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 1px;
+  color: var(--cos-accent);
+  margin-bottom: 6px;
+}
+
+.step-title {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--text-primary);
+  margin-bottom: 6px;
+}
+
+.step-desc {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+
+.step-code {
+  margin-top: 10px;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 10px 14px;
+  font-family: 'DM Mono', monospace;
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* ── FOOTER ── */
+.footer {
+  text-align: center;
+  padding: 80px 24px;
+  border-top: 1px solid var(--border);
+  position: relative;
+  z-index: 1;
+}
+
+.footer-logo {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 48px;
+  letter-spacing: 8px;
+  color: var(--text-muted);
+  margin-bottom: 16px;
+}
+
+.footer-logo span { color: var(--cos-accent); opacity: 0.5; }
+
+.footer-text {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  color: var(--text-muted);
+  letter-spacing: 1px;
+}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 600px) {
+  .mini-grid-4 { grid-template-columns: repeat(2, 1fr); }
+  .hero-meta { gap: 16px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ── HERO ── -->
+<div class="hero">
+  <div class="hero-eyebrow">Broadcasting & Routing Intelligence for Decision and Grounding Engine</div>
+  <div class="hero-title">BRI<span>D</span>GE</div>
+  <div class="hero-sub">社長の脳内整理を1画面に集約する、AI複眼思考プラットフォーム</div>
+  <div class="hero-meta">
+    <div class="hero-meta-item">
+      <div class="hero-meta-label">設計開始</div>
+      <div class="hero-meta-value">2026年6月</div>
+    </div>
+    <div class="hero-meta-item">
+      <div class="hero-meta-label">エージェント</div>
+      <div class="hero-meta-value">4人（Claude + Gemini）</div>
+    </div>
+    <div class="hero-meta-item">
+      <div class="hero-meta-label">対応モデル</div>
+      <div class="hero-meta-value">7モデル</div>
+    </div>
+    <div class="hero-meta-item">
+      <div class="hero-meta-label">デバイス</div>
+      <div class="hero-meta-value">PC・モバイル・スマホ</div>
+    </div>
+  </div>
+  <div class="scroll-hint">
+    <div class="scroll-line"></div>
+    <div class="scroll-label">scroll</div>
+  </div>
+</div>
+
+<!-- ── 01 課題 ── -->
+<div class="section">
+  <div class="section-number">01 — 解決する課題</div>
+  <div class="section-title">PROBLEM</div>
+
+  <div class="problem-grid">
+    <div class="problem-card">
+      <div class="problem-icon">⇄</div>
+      <div class="problem-title">移動コストの発生</div>
+      <div class="problem-desc">毎日4つのチャット（Claude CoS・Claude CHRO・Gemini CoS・Gemini CHRO）を行き来していた。切り替えのたびに思考が途切れる。</div>
+    </div>
+    <div class="problem-card">
+      <div class="problem-icon">◫</div>
+      <div class="problem-title">同じ文章を2度読む</div>
+      <div class="problem-desc">ClaudeとGeminiで気づきの違いはあるが、ほぼ同じ内容を2度読み直す非効率が恒常化していた。</div>
+    </div>
+    <div class="problem-card">
+      <div class="problem-icon">⊘</div>
+      <div class="problem-title">文脈の断絶</div>
+      <div class="problem-desc">あるAIとの深掘り結果を別のAIに渡す際、毎回手動でコピペ・再説明が必要だった。</div>
+    </div>
+  </div>
+
+  <div class="solution-arrow">↓ BRIDGE が解決する ↓</div>
+
+  <div class="solution-grid">
+    <div class="solution-card">
+      <div class="problem-icon">◈</div>
+      <div class="problem-title">1画面・ゼロ移動</div>
+      <div class="problem-desc">4人のAIが1画面に集約。タブ切り替えも不要。議題を投げれば全員が同時に応答する。</div>
+    </div>
+    <div class="solution-card">
+      <div class="problem-icon">⬡</div>
+      <div class="problem-title">並列比較・即選択</div>
+      <div class="problem-desc">4列グリッドで同時表示。読み比べてワンクリックで「この人と深掘りする」を選べる。</div>
+    </div>
+    <div class="solution-card">
+      <div class="problem-icon">⤳</div>
+      <div class="problem-title">会話ごとの引き継ぎ</div>
+      <div class="problem-desc">HANDOFFで会話履歴ごと別のAIへ渡せる。GeminiへはワンクリックコピーでOK。</div>
+    </div>
+  </div>
+</div>
+
+<div class="divider" style="max-width:960px; margin:0 auto;"></div>
+
+<!-- ── 02 画面 ── -->
+<div class="section">
+  <div class="section-number">02 — ツールの画面</div>
+  <div class="section-title">SCREENS</div>
+
+  <div class="screens-grid">
+
+    <!-- BROADCAST -->
+    <div class="screen-item">
+      <div class="screen-label">
+        <div class="screen-dot" style="background:var(--broadcast);"></div>
+        <div class="screen-label-text">BROADCAST MODE — 全員に同時投げ</div>
+      </div>
+      <div class="screen-body">
+        <div class="mini-header">
+          <div class="mini-logo">BRI<span>D</span>GE</div>
+          <div style="display:flex;align-items:center;gap:8px;">
+            <div style="font-family:'DM Mono',monospace;font-size:9px;color:var(--text-muted);">Sonnet 4.6 ▾</div>
+            <div class="mini-badge bc">● BROADCAST</div>
+          </div>
+        </div>
+        <div class="mini-grid mini-grid-4">
+          <div class="mini-panel">
+            <div class="mini-agent-head">
+              <div class="mini-avatar cos">CoS</div>
+              <div class="mini-agent-name cos-c">Claude CoS</div>
+            </div>
+            <div class="mini-text">設計上の核心的分岐点は3つあります。まず待機の定義から整理…</div>
+            <div class="mini-btn">この人で続ける →</div>
+          </div>
+          <div class="mini-panel">
+            <div class="mini-agent-head">
+              <div class="mini-avatar chro">CHR</div>
+              <div class="mini-agent-name chro-c">Claude CHRO</div>
+            </div>
+            <div class="mini-text">ツールの前に問い直したいことがあります。なぜ4つを行き来することになったのか…</div>
+            <div class="mini-btn">この人で続ける →</div>
+          </div>
+          <div class="mini-panel">
+            <div class="mini-agent-head">
+              <div class="mini-avatar gcos">GCS</div>
+              <div class="mini-agent-name gcos-c">Gemini CoS</div>
+            </div>
+            <div class="mini-text">事実と解釈を分けると、移動コストが本質的な課題です。仕組みの観点から…</div>
+            <div class="mini-btn">この人で続ける →</div>
+          </div>
+          <div class="mini-panel">
+            <div class="mini-agent-head">
+              <div class="mini-avatar gchro">GCH</div>
+              <div class="mini-agent-name gchro-c">Gemini CHRO</div>
+            </div>
+            <div class="mini-text">人が4つのチャットを行き来する状態は、認知負荷の観点から非常にコストが…</div>
+            <div class="mini-btn">この人で続ける →</div>
+          </div>
+        </div>
+        <div class="mini-input-bar">
+          <div class="mini-toggle">● 全員に送る</div>
+          <div class="mini-input"></div>
+          <div class="mini-send">送信</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FOCUS -->
+    <div class="screen-item">
+      <div class="screen-label">
+        <div class="screen-dot" style="background:var(--focus);"></div>
+        <div class="screen-label-text">FOCUS MODE — 1人と深掘り・他はタブに折り畳み</div>
+      </div>
+      <div class="screen-body">
+        <div class="mini-header">
+          <div class="mini-logo">BRI<span>D</span>GE</div>
+          <div style="display:flex;align-items:center;gap:8px;">
+            <div style="font-family:'DM Mono',monospace;font-size:9px;color:var(--text-muted);">Opus 4.7 ▾</div>
+            <div class="mini-badge fc">FOCUS : CoS</div>
+          </div>
+        </div>
+        <div class="mini-grid mini-grid-2">
+          <div class="mini-focus-main">
+            <div class="mini-agent-head">
+              <div class="mini-avatar cos">CoS</div>
+              <div class="mini-agent-name cos-c">Claude CoS — 深掘り中</div>
+            </div>
+            <div class="mini-bubble user">HANDOFFで渡す時、会話履歴はどんなフォーマットが最適か？</div>
+            <div class="mini-bubble cos">構造化テキストが最適です。Geminiが迷わず読めるよう…</div>
+            <div class="mini-bubble user">ワンクリックでコピーできるようにしてほしい</div>
+            <div class="mini-handoff-btn">HANDOFF →</div>
+          </div>
+          <div class="mini-tab-area">
+            <div class="mini-tab">CHRO</div>
+            <div class="mini-tab" style="color:#7ae8b0;">G-CoS</div>
+            <div class="mini-tab">G-CHR</div>
+          </div>
+        </div>
+        <div class="mini-input-bar">
+          <div class="mini-toggle" style="border-color:var(--border-bright);color:var(--text-muted);background:transparent;">○ 一人に送る</div>
+          <div class="mini-input"></div>
+          <div class="mini-send">送信</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- HANDOFF -->
+    <div class="screen-item">
+      <div class="screen-label">
+        <div class="screen-dot" style="background:var(--handoff);"></div>
+        <div class="screen-label-text">HANDOFF — 会話履歴ごと別のAIへ引き継ぎ</div>
+      </div>
+      <div class="screen-body">
+        <div style="background:var(--bg);border:1px solid var(--border-bright);border-radius:8px;padding:20px;">
+          <div style="font-family:'DM Mono',monospace;font-size:11px;color:var(--handoff);margin-bottom:16px;letter-spacing:2px;">HANDOFF · CHROへ引き継ぐ</div>
+          <div style="background:var(--surface2);border:1px solid var(--border);border-radius:4px;padding:12px;font-family:'DM Mono',monospace;font-size:10px;line-height:1.8;color:var(--text-muted);">
+            <span style="color:var(--handoff);">=== BRIDGE HANDOFF ===</span><br>
+            日時：2026/06/03 09:34<br>
+            モード：BROADCAST → FOCUS(CoS)<br><br>
+            <span style="color:var(--handoff);">【BROADCAST】</span><br>
+            社長：ツール設計について…<br>
+            CoS：設計上の核心的…<br><br>
+            <span style="color:var(--handoff);">【引き継ぎ論点】</span><br>
+            ・現在の問い：フォーマット確認<br>
+            ・確定事項：構造化テキスト方式<br>
+            ・未決事項：Gemini側プロンプト<br><br>
+            <span style="color:var(--handoff);">=== HANDOFF END ===</span>
+          </div>
+          <div style="display:flex;justify-content:flex-end;gap:8px;margin-top:16px;">
+            <div style="padding:6px 14px;border:1px solid var(--border-bright);border-radius:4px;font-family:'DM Mono',monospace;font-size:10px;color:var(--text-secondary);">キャンセル</div>
+            <div style="padding:6px 14px;border:1px solid var(--handoff);border-radius:4px;background:rgba(200,75,232,0.12);font-family:'DM Mono',monospace;font-size:10px;color:var(--handoff);">ワンクリックコピー</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="divider" style="max-width:960px; margin:0 auto;"></div>
+
+<!-- ── 03 使い方 ── -->
+<div class="section">
+  <div class="section-number">03 — 使い方</div>
+  <div class="section-title">HOW IT WORKS</div>
+
+  <div class="modes-grid">
+    <div class="mode-card">
+      <div class="mode-number">01</div>
+      <div class="mode-name">BROADCAST</div>
+      <div class="mode-desc">1つの問いを4人全員に同時投下。全員の回答が揃ってから一斉表示される。画面は動かない。</div>
+      <div class="mode-flow">
+        入力 → 送信<br>
+        → 4列グリッドで同時表示<br>
+        → 読み比べて選ぶ
+      </div>
+    </div>
+    <div class="mode-card">
+      <div class="mode-number">02</div>
+      <div class="mode-name">FOCUS</div>
+      <div class="mode-desc">「この人で続ける」を押した人が全幅に展開。他の3人はタブに折り畳まれ、いつでも呼び戻せる。</div>
+      <div class="mode-flow">
+        選択 → FOCUS移行<br>
+        → 1対1で深掘り<br>
+        → 形になったらHANDOFF
+      </div>
+    </div>
+    <div class="mode-card">
+      <div class="mode-number">03</div>
+      <div class="mode-name">HANDOFF</div>
+      <div class="mode-desc">会話履歴を構造化テキストに変換。ワンクリックコピーで別のAIへ渡せる。Gemini連携もコピペで完結。</div>
+      <div class="mode-flow">
+        HANDOFF → プレビュー<br>
+        → ワンクリックコピー<br>
+        → Geminiに貼り付け
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="divider" style="max-width:960px; margin:0 auto;"></div>
+
+<!-- ── 04 仕様 ── -->
+<div class="section">
+  <div class="section-number">04 — 最終確定仕様</div>
+  <div class="section-title">SPECIFICATION</div>
+
+  <div style="margin-bottom:48px;">
+    <div style="font-family:'DM Mono',monospace;font-size:11px;letter-spacing:1.5px;color:var(--text-muted);text-transform:uppercase;margin-bottom:16px;">エージェント × モデル対応表</div>
+    <div class="agent-table-wrap">
+      <table class="agent-table">
+        <thead>
+          <tr>
+            <th>エージェント</th>
+            <th>軽量・高速</th>
+            <th>標準（デフォルト）</th>
+            <th>高精度</th>
+            <th>最上位</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="tag claude">Claude</span> CoS</td>
+            <td>Haiku 4.5</td>
+            <td>Sonnet 4.6 <span class="default-badge">DEFAULT</span></td>
+            <td>Opus 4.7</td>
+            <td>Opus 4.8</td>
+          </tr>
+          <tr>
+            <td><span class="tag claude">Claude</span> CHRO</td>
+            <td>Haiku 4.5</td>
+            <td>Sonnet 4.6 <span class="default-badge">DEFAULT</span></td>
+            <td>Opus 4.7</td>
+            <td>Opus 4.8</td>
+          </tr>
+          <tr>
+            <td><span class="tag gemini">Gemini</span> CoS</td>
+            <td>Flash-Lite 2.5</td>
+            <td>Flash 3.5 <span class="default-badge">DEFAULT</span></td>
+            <td>Pro 3.1</td>
+            <td>—</td>
+          </tr>
+          <tr>
+            <td><span class="tag gemini">Gemini</span> CHRO</td>
+            <td>Flash-Lite 2.5</td>
+            <td>Flash 3.5 <span class="default-badge">DEFAULT</span></td>
+            <td>Pro 3.1</td>
+            <td>—</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div>
+    <div style="font-family:'DM Mono',monospace;font-size:11px;letter-spacing:1.5px;color:var(--text-muted);text-transform:uppercase;margin-bottom:16px;">システム仕様</div>
+    <div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;overflow:hidden;">
+      <table class="spec-table">
+        <thead>
+          <tr>
+            <th style="width:180px;">項目</th>
+            <th>内容</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="spec-key">ホスティング</td>
+            <td><span class="tag tech">Vercel</span></td>
+          </tr>
+          <tr>
+            <td class="spec-key">フレームワーク</td>
+            <td><span class="tag tech">Next.js</span> <span class="tag tech">Tailwind CSS</span> <span class="tag tech">shadcn/ui（部分採用）</span></td>
+          </tr>
+          <tr>
+            <td class="spec-key">API</td>
+            <td><span class="tag claude">Anthropic API</span> <span class="tag gemini">Google AI Studio API</span></td>
+          </tr>
+          <tr>
+            <td class="spec-key">知識ベース</td>
+            <td>COMPASS全文・用語辞典全文・社長メッセージ全文（システムプロンプトに永続埋め込み）</td>
+          </tr>
+          <tr>
+            <td class="spec-key">履歴管理</td>
+            <td>自動タイトル付与・手動編集・削除・議事録自動生成</td>
+          </tr>
+          <tr>
+            <td class="spec-key">対応デバイス</td>
+            <td>PC（4列グリッド）/ スマホ（1列タブ切り替え） レスポンシブ対応</td>
+          </tr>
+          <tr>
+            <td class="spec-key">起動方法</td>
+            <td>ブラウザで専用URLにアクセス（全デバイス共通）</td>
+          </tr>
+          <tr>
+            <td class="spec-key">セキュリティ</td>
+            <td>APIキーはサーバーサイドで管理（Next.jsのServer Actions）。ブラウザに露出しない。</td>
+          </tr>
+          <tr>
+            <td class="spec-key">Gemini連携</td>
+            <td>HANDOFFの構造化テキストをワンクリックコピー → Gemini側に受け皿プロンプトを設置</td>
+          </tr>
+          <tr>
+            <td class="spec-key">モデル更新</td>
+            <td>MVP：手動追加 / Phase2：APIから自動取得</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div class="divider" style="max-width:960px; margin:0 auto;"></div>
+
+<!-- ── 05 工夫 ── -->
+<div class="section">
+  <div class="section-number">05 — 工夫したポイント</div>
+  <div class="section-title">INSIGHTS</div>
+
+  <div class="insight-grid">
+    <div class="insight-card">
+      <div class="insight-tag good">✦ 工夫</div>
+      <div class="insight-title">壁打ちで設計を完全に詰め切った</div>
+      <div class="insight-body">コードを1行も書く前に、壁打ちで要件を完全言語化。「会議室」という仮説が「放送局」に変わり、3人モードが不要と判明するなど、設計の精度が格段に上がった。</div>
+    </div>
+    <div class="insight-card">
+      <div class="insight-tag good">✦ 工夫</div>
+      <div class="insight-title">「放送局モデル」の発見</div>
+      <div class="insight-body">当初「3人の会議室」として設計していたが、壁打ちで「社長だけが全員と対話する」という真の要件が発覚。会議室ではなく指令センターという設計に転換した。</div>
+    </div>
+    <div class="insight-card">
+      <div class="insight-tag good">✦ 工夫</div>
+      <div class="insight-title">HANDOFFフォーマットの設計</div>
+      <div class="insight-body">Gemini API連携の代わりに、構造化テキスト＋ワンクリックコピーという運用設計を採用。技術的複雑さゼロで、実質的にGemini連携と同等の体験を実現した。</div>
+    </div>
+    <div class="insight-card">
+      <div class="insight-tag good">✦ 工夫</div>
+      <div class="insight-title">同時表示・画面が動かない設計</div>
+      <div class="insight-body">「読んでいる途中に画面が動くのは嫌だ」という社長の一言から、全員の回答が揃ってから一斉表示する設計を採用。速さより安定性を優先した。</div>
+    </div>
+    <div class="insight-card">
+      <div class="insight-tag good">✦ 工夫</div>
+      <div class="insight-title">モデル選択ガイドの内包</div>
+      <div class="insight-body">ドロップダウンを開いた瞬間に各モデルの用途説明が表示される設計。「どのモデルを選ぶか」の判断コストをゼロにした。</div>
+    </div>
+    <div class="insight-card">
+      <div class="insight-tag good">✦ 工夫</div>
+      <div class="insight-title">知識ベースのフル埋め込み</div>
+      <div class="insight-body">COMPASS・用語辞典・社長メッセージを全文システムプロンプトに埋め込む案Bを採用。トークンコストより判断の質を優先するという意思決定。</div>
+    </div>
+  </div>
+</div>
+
+<div class="divider" style="max-width:960px; margin:0 auto;"></div>
+
+<!-- ── 06 苦戦 ── -->
+<div class="section">
+  <div class="section-number">06 — 苦戦したポイント</div>
+  <div class="section-title">CHALLENGES</div>
+
+  <div class="insight-grid">
+    <div class="insight-card">
+      <div class="insight-tag hard">✕ 苦戦</div>
+      <div class="insight-title">「会議室」設計からの大幅修正</div>
+      <div class="insight-body">最初の設計は「CoS・CHRO・社長の3人会議室」だった。壁打ちで「社長だけが全員と話す」という事実が発覚し、設計を全面的に作り直した。</div>
+    </div>
+    <div class="insight-card">
+      <div class="insight-tag hard">✕ 苦戦</div>
+      <div class="insight-title">Artifact → Webアプリへの路線変更</div>
+      <div class="insight-body">当初ClaudeのArtifactとして実装予定だったが、「育てて使い続けたい」という一言で設計が変わった。知識ベースの全文埋め込み＋長期運用を考えるとWebアプリが正解と判断。</div>
+    </div>
+    <div class="insight-card">
+      <div class="insight-tag hard">✕ 苦戦</div>
+      <div class="insight-title">APIキーのセキュリティ問題</div>
+      <div class="insight-body">クライアントサイドにAPIキーを置くとブラウザから丸見えになる問題。Next.jsのサーバーサイド処理で解決したが、当初Artifactを前提に考えていたため設計の見直しが必要だった。</div>
+    </div>
+    <div class="insight-card">
+      <div class="insight-tag hard">✕ 苦戦</div>
+      <div class="insight-title">Gemini連携の方針転換</div>
+      <div class="insight-body">Artifact時代はGemini連携をPhase2（コピペ運用）に後回しにした。Webアプリに変わった瞬間に技術的ハードルが同じになり、Phase1から組み込む判断に変更。</div>
+    </div>
+    <div class="insight-card">
+      <div class="insight-tag hard">✕ 苦戦</div>
+      <div class="insight-title">起動方法の誤認識</div>
+      <div class="insight-body">「Claudeプロジェクトから起動」と誤って説明してしまう場面があった。Webアプリは「ブラウザで専用URLにアクセス」が正しい。ArtifactとWebアプリの違いの説明が難しかった。</div>
+    </div>
+    <div class="insight-card">
+      <div class="insight-tag hard">✕ 苦戦</div>
+      <div class="insight-title">履歴管理の見落とし</div>
+      <div class="insight-body">当初は履歴管理を設計に含めていなかった。「膨大な履歴がストックされるのでは？」という社長の指摘で発覚。自動タイトル・編集・削除・議事録生成を後から追加した。</div>
+    </div>
+  </div>
+</div>
+
+<div class="divider" style="max-width:960px; margin:0 auto;"></div>
+
+<!-- ── 07 開発手順 ── -->
+<div class="section">
+  <div class="section-number">07 — 開発手順</div>
+  <div class="section-title">DEVELOPMENT</div>
+
+  <div class="steps-list">
+    <div class="step">
+      <div class="step-num">STEP 01</div>
+      <div class="step-title">APIキーの取得</div>
+      <div class="step-desc">Anthropic（console.anthropic.com）とGoogle AI Studio（ai.google.dev）でAPIキーを取得。クレジットカード登録が必要。</div>
+      <div class="step-code">所要時間：約15分</div>
+    </div>
+    <div class="step">
+      <div class="step-num">STEP 02</div>
+      <div class="step-title">Vercelアカウントの作成</div>
+      <div class="step-desc">vercel.comにアクセスし、GitHubアカウントでログイン。新規登録不要。</div>
+      <div class="step-code">所要時間：約3分</div>
+    </div>
+    <div class="step">
+      <div class="step-num">STEP 03</div>
+      <div class="step-title">Next.jsプロジェクトの作成</div>
+      <div class="step-desc">GitHubにBRIDGEリポジトリを作成。Next.js + Tailwind CSS + shadcn/uiの環境を構築。</div>
+      <div class="step-code">npx create-next-app@latest bridge --typescript --tailwind</div>
+    </div>
+    <div class="step">
+      <div class="step-num">STEP 04</div>
+      <div class="step-title">知識ベースの埋め込み</div>
+      <div class="step-desc">COMPASS全文・用語辞典全文・社長メッセージ全文をシステムプロンプトとして実装。CoS・CHROそれぞれに役割定義を追加。</div>
+      <div class="step-code">server/prompts/cos.ts<br>server/prompts/chro.ts</div>
+    </div>
+    <div class="step">
+      <div class="step-num">STEP 05</div>
+      <div class="step-title">エージェントAPIの実装</div>
+      <div class="step-desc">Anthropic APIとGoogle AI APIへの呼び出しをサーバーサイドで実装。4エージェント・7モデルに対応。APIキーはサーバー側で管理。</div>
+      <div class="step-code">app/api/broadcast/route.ts<br>app/api/focus/route.ts</div>
+    </div>
+    <div class="step">
+      <div class="step-num">STEP 06</div>
+      <div class="step-title">BRIDGE UIの実装</div>
+      <div class="step-desc">4列グリッド・FOCUS・HANDOFF・履歴パネル・モデル選択ドロップダウンをReactで実装。レスポンシブ対応（PC：4列 / スマホ：1列タブ）。</div>
+      <div class="step-code">components/BroadcastGrid.tsx<br>components/FocusPanel.tsx<br>components/HandoffModal.tsx</div>
+    </div>
+    <div class="step">
+      <div class="step-num">STEP 07</div>
+      <div class="step-title">履歴管理の実装</div>
+      <div class="step-desc">永続ストレージAPIで会話履歴を保存。自動タイトル生成・編集・削除・議事録生成機能を追加。</div>
+      <div class="step-code">lib/storage.ts<br>components/HistoryPanel.tsx</div>
+    </div>
+    <div class="step">
+      <div class="step-num">STEP 08</div>
+      <div class="step-title">Vercelへのデプロイ</div>
+      <div class="step-desc">GitHubリポジトリをVercelに接続。環境変数にAPIキーを設定してデプロイ。専用URLが発行される。</div>
+      <div class="step-code">ANTHROPIC_API_KEY=sk-ant-...<br>GOOGLE_AI_API_KEY=AIza...</div>
+    </div>
+  </div>
+</div>
+
+<!-- ── FOOTER ── -->
+<div class="footer">
+  <div class="footer-logo">BRI<span>D</span>GE</div>
+  <div class="footer-text">Broadcasting & Routing Intelligence for Decision and Grounding Engine</div>
+  <div style="margin-top:8px;font-family:'DM Mono',monospace;font-size:10px;color:var(--text-muted);">株式会社ナガネツ — 2026</div>
+</div>
+
+</body>
+</html>
