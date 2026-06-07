@@ -1189,6 +1189,14 @@ body::before {
             <td>ブラウザで専用URLにアクセス（全デバイス共通）</td>
           </tr>
           <tr>
+            <td class="spec-key">モデル選択</td>
+            <td>ドロップダウン3つ（Claude用・Gemini用・表示モード用）</td>
+          </tr>
+          <tr>
+            <td class="spec-key">表示モード</td>
+            <td>両方（4列）／Claudeのみ（2列）／Geminiのみ（2列）の3択。切替時も会話履歴を引き継ぐ。</td>
+          </tr>
+          <tr>
             <td class="spec-key">セキュリティ</td>
             <td>APIキーはサーバーサイドで管理（Next.jsのServer Actions）。ブラウザに露出しない。</td>
           </tr>
@@ -1203,6 +1211,39 @@ body::before {
         </tbody>
       </table>
     </div>
+  </div>
+
+  <div style="margin-top:48px;">
+    <div style="font-family:'DM Mono',monospace;font-size:11px;letter-spacing:1.5px;color:var(--text-muted);text-transform:uppercase;margin-bottom:16px;">費用試算</div>
+    <div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;overflow:hidden;">
+      <table class="spec-table">
+        <thead>
+          <tr>
+            <th style="width:220px;">表示モード</th>
+            <th style="width:200px;">月額（目安）</th>
+            <th>用途</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="spec-key"><span class="tag gemini">Geminiのみ</span>（Flash 3.5）</td>
+            <td style="color:var(--gemini-accent);font-weight:500;">約$7（約¥1,100）</td>
+            <td>普段使い</td>
+          </tr>
+          <tr>
+            <td class="spec-key"><span class="tag claude">Claudeのみ</span>（Sonnet 4.6）</td>
+            <td style="color:var(--cos-accent);font-weight:500;">約$23（約¥3,600）</td>
+            <td>Claude精度重視</td>
+          </tr>
+          <tr>
+            <td class="spec-key"><span class="tag tech">両方</span>（デフォルト）</td>
+            <td style="color:var(--broadcast);font-weight:500;">約$30（約¥4,650）</td>
+            <td>比較・重要判断</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div style="margin-top:10px;font-family:'DM Mono',monospace;font-size:11px;color:var(--text-muted);">※プロンプトキャッシュあり・月20セッション・30回/セッション想定</div>
   </div>
 </div>
 
@@ -1244,6 +1285,11 @@ body::before {
       <div class="insight-title">知識ベースのフル埋め込み</div>
       <div class="insight-body">COMPASS・用語辞典・社長メッセージを全文システムプロンプトに埋め込む案Bを採用。トークンコストより判断の質を優先するという意思決定。</div>
     </div>
+    <div class="insight-card">
+      <div class="insight-tag good">✦ 工夫</div>
+      <div class="insight-title">表示モードでコストをコントロール</div>
+      <div class="insight-body">「Geminiのみ」「Claudeのみ」「両方」の3モードを実装。普段はGeminiのみ（月約$7）、重要な判断時だけ両方（月約$30）に切り替える運用設計。コストと品質を自分でコントロールできる。</div>
+    </div>
   </div>
 </div>
 
@@ -1284,6 +1330,11 @@ body::before {
       <div class="insight-tag hard">✕ 苦戦</div>
       <div class="insight-title">履歴管理の見落とし</div>
       <div class="insight-body">当初は履歴管理を設計に含めていなかった。「膨大な履歴がストックされるのでは？」という社長の指摘で発覚。自動タイトル・編集・削除・議事録生成を後から追加した。</div>
+    </div>
+    <div class="insight-card">
+      <div class="insight-tag hard">✕ 苦戦</div>
+      <div class="insight-title">コスト試算で方針転換</div>
+      <div class="insight-body">このチャット全体をBRIDGEで月20回行うと月額$396になることが判明。Geminiのみモードを追加することで月$7〜$30にコントロールできる設計に変更した。</div>
     </div>
   </div>
 </div>
