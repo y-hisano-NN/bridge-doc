@@ -1174,7 +1174,7 @@ body::before {
           </tr>
           <tr>
             <td class="spec-key">知識ベース</td>
-            <td>COMPASS全文・用語辞典全文・社長メッセージ全文（システムプロンプトに永続埋め込み）</td>
+            <td>COMPASS全文・用語辞典全文・社長メッセージ全文（Vercel Blobに保存・設定画面からUIでアップロード更新）</td>
           </tr>
           <tr>
             <td class="spec-key">履歴管理</td>
@@ -1282,8 +1282,8 @@ body::before {
     </div>
     <div class="insight-card">
       <div class="insight-tag good">✦ 工夫</div>
-      <div class="insight-title">知識ベースのフル埋め込み</div>
-      <div class="insight-body">COMPASS・用語辞典・社長メッセージを全文システムプロンプトに埋め込む案Bを採用。トークンコストより判断の質を優先するという意思決定。</div>
+      <div class="insight-title">知識ベースのUIアップロード方式</div>
+      <div class="insight-body">COMPASS・用語辞典・社長メッセージをVercel Blobに保存し、設定画面からファイルをアップロードするだけで更新できる設計を採用。コードに触れず月1回の更新が完結する。</div>
     </div>
     <div class="insight-card">
       <div class="insight-tag good">✦ 工夫</div>
@@ -1367,9 +1367,9 @@ body::before {
     </div>
     <div class="step">
       <div class="step-num">STEP 04</div>
-      <div class="step-title">知識ベースの埋め込み</div>
-      <div class="step-desc">COMPASS全文・用語辞典全文・社長メッセージ全文をシステムプロンプトとして実装。CoS・CHROそれぞれに役割定義を追加。</div>
-      <div class="step-code">server/prompts/cos.ts<br>server/prompts/chro.ts</div>
+      <div class="step-title">知識ベースのアップロード</div>
+      <div class="step-desc">設定画面（/settings）からCOMPASS・用語辞典・社長メッセージをVercel Blobにアップロード。コードに触れずUIから更新可能。役割定義（CoS・CHRO）はリポジトリで管理。</div>
+      <div class="step-code">app/api/knowledge/route.ts<br>app/settings/page.tsx</div>
     </div>
     <div class="step">
       <div class="step-num">STEP 05</div>
